@@ -19,6 +19,7 @@
   children:
     - collab_dev
     - code_of_conduct
+    - support_policy
 -
   title: Videos
   children:
