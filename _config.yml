@@ -10,6 +10,6 @@ kramdown:
 # Default sitewide metadata
 meta_defaults:
   description: ""
-  title: "Global Continous Delivery"
+  title: "Global Continuous Delivery"
   # All titles (including the default) will have this prepended to them
   title_prefix: "Spinnaker: "
