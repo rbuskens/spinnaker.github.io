@@ -10,4 +10,5 @@
   children:
     - collab_dev
     - code_of_conduct
+    - contributing_guidelines
     - support_policy
