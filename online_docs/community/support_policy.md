@@ -14,7 +14,7 @@ lang: en
 
 ## Bugs and Feature Requests
 
-If you have what looks like a bug, or you would like to make a featur
+If you have what looks like a bug, or you would like to make a feature
 request, please use the [GitHub issue tracking
 system](https://github.com/spinnaker/spinnaker/issues).
 
@@ -38,7 +38,7 @@ one](http://stackoverflow.com/questions/ask?tags=spinnaker)!
 ### Slack
 
 The Spinnaker team hangs out on Slack in both the <code>#users</code>
-for user-related discussions and <code>#dev</code> channels for
+channel for user-related discussions and the <code>#dev</code> channel for
 developer-related discussions. You can participate in the Spinnaker
 discussions [here](https://spinnakerteam.slack.com). Slack
 requires registration, but the Spinnaker team is open invitation to
