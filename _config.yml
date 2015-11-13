@@ -1,4 +1,4 @@
-baseurl: "/spinnaker"
+baseurl: ""
 exclude: 
   - "less"
   - "node_modules"

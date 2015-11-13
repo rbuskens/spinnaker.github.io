@@ -89,12 +89,9 @@ gulp.task('serve', ['build-all'], function () {
 			// baseDir is required but we only want routes starting with /spinnaker
 			// to work so it's as close to real gh-pages hosting as possible to
 			// simplify local testing
-			baseDir: '.',
-			routes: {
-				'/spinnaker': '_site',
-			}
+			baseDir: '_site'
 		},
-		startPath: '/spinnaker'
+		startPath: '/'
 	});
 	gulp.watch('./less/**/*.less', ['less-watch']);
 	// Just rebuild the jekyll site to speed things up, and also because
