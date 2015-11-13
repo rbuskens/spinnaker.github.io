@@ -1,5 +1,5 @@
 baseurl: ""
-exclude: 
+exclude:
   - "less"
   - "node_modules"
   - "gulpfile.js"
@@ -10,6 +10,6 @@ kramdown:
 # Default sitewide metadata
 meta_defaults:
   description: ""
-  title: "Smoother Cloud Deployments"
+  title: "Global Continous Delivery"
   # All titles (including the default) will have this prepended to them
-  title_prefix: "Spinnaker: "  
+  title_prefix: "Spinnaker: "
