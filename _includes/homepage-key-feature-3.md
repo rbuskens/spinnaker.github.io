@@ -1,3 +1,3 @@
-### Scalable and Pluggable
+### Easy to extend and integrate    
 
-Add your own cloud providers
+Spinnaker offers a robust API that is easy to extend. Plug in your own stages or even contribute your own cloud provider integration. 

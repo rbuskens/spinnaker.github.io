@@ -8,8 +8,6 @@ lang: en
 * Table of contents. This line is required to start the list.
 {:toc}
 
-# **TODO: Add link that allows users to register with Slack.**
-
 # Support Policy
 
 ## Bugs and Feature Requests
@@ -37,10 +35,12 @@ one](http://stackoverflow.com/questions/ask?tags=spinnaker)!
 
 ### Slack
 
+<script async defer src="http://join-spinnaker.herokuapp.com/slackin.js"></script>
+
 The Spinnaker team hangs out on Slack in both the <code>#users</code>
 channel for user-related discussions and the <code>#dev</code> channel for
 developer-related discussions. You can participate in the Spinnaker
 discussions [here](https://spinnakerteam.slack.com). Slack
 requires registration, but the Spinnaker team is open invitation to
-anyone to register **here: FILL IN LINK LATER**. Feel free to come and
+anyone to register [here](http://join-spinnaker.herokuapp.com) Feel free to come and
 ask any and all questions.

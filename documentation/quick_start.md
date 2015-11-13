@@ -10,9 +10,3 @@ lang: en
 
 # Quick Start
 
-## Creating an application
-
-## Deploying a new cluster
-
-## Creating and running a pipeline
-

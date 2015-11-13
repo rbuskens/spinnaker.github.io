@@ -1,3 +1,3 @@
-### Multi-account support
+### A global view for your cloud
 
-See your deployments across different accounts and cloud providers
+Easily navigate your cloud resources across accounts and cloud providers. 

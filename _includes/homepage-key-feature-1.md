@@ -1,3 +1,3 @@
-### Robust, Flexible Pipelines
+### Repeatable Automated Deployments
 
-Spinnaker pipelines let you codify best practices in an automated, reproducible way
+Spinnaker pipelines let you easily define repeateable configurations via pipelines and strategies.
