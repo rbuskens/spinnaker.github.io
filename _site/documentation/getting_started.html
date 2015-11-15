@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+
+
+
+
+
+
+
+
+
+
+
+<!-- Basic metadata -->
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1, IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Title and Description -->
+<title>Spinnaker: Getting Started</title>
+<meta name="description" content="">
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Spinnaker: Getting Started">
+<meta itemprop="description" content="">
+<meta itemprop="image" content="https://netflix.github.io/images/falcor-logo.png">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@netflix">
+<meta name="twitter:title" content="Spinnaker: Getting Started">
+<meta name="twitter:description" content="">
+<meta name="twitter:creator" content="@netflixoss">
+<meta name="twitter:image:src" content="https://netflix.github.io/images/falcor-logo-twitter-card.png">
+
+<!-- Open graph metadata -->
+<meta property="og:title" content="Spinnaker: Getting Started">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Falcor" />
+<meta property="og:url" content="https://netflix.github.io/documentation/getting_started.html">
+<meta property="og:image" content="http://netflix.github.io/images/falcor-logo-og.png">
+<meta property="og:image:secure_url" content="https://netflix.github.io/images/falcor-logo-og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:description" content="">
+
+<!-- All site CSS -->
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/spinnaker-site.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<!-- All site favicons -->
+<link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/images/favicons/favicons-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicons/favicons-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="/images/favicons/favicons-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/images/favicons/favicons-16x16.png" sizes="16x16">
+<link rel="manifest" href="/images/favicons/manifest.json">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+<meta name="theme-color" content="#000000">
+
+  </head>
+  <body >
+  <a class="sr-only" href="#main-content">Skip to main content</a>
+  <header>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+
+          <!-- Branding and mobile menu button -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".site-navigation" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+              <img class="img-plain navbar-logo" src="/images/spinnaker-header-transparent.png" alt="Spinnaker logo">
+            </a>
+          </div>
+
+          <!-- Main navigation links -->
+          <div class="navbar-collapse collapse site-navigation">
+            <ul class="nav navbar-nav">
+              
+                
+                  
+                    <li class="">
+                      <a href="https://www.github.com/spinnaker/spinnaker">Installation</a>
+                    </li>
+                  
+                
+              </li>
+              
+                
+                  <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      Guides <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      
+                        
+                        <li class="active">
+                          <a href="/documentation/getting_started.html">Getting Started</a>
+                        </li>
+                      
+                        
+                        <li class="">
+                          <a href="/documentation/user_guide.html">User's Guide</a>
+                        </li>
+                      
+                        
+                        <li class="">
+                          <a href=""></a>
+                        </li>
+                      
+                        
+                        <li class="">
+                          <a href="/documentation/developer_guide.html">Developer's Guide</a>
+                        </li>
+                      
+                    </ul>
+                  </li>
+                
+              </li>
+              
+                
+                  <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      Community <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      
+                        
+                        <li class="">
+                          <a href="/documentation/collab_dev.html">On Collaborative Development</a>
+                        </li>
+                      
+                        
+                        <li class="">
+                          <a href="/online_docs/community/code_of_conduct.html">Community Code of Conduct</a>
+                        </li>
+                      
+                        
+                        <li class="">
+                          <a href="/online_docs/community/contributing_guidelines.html">Contributing to Spinnaker</a>
+                        </li>
+                      
+                        
+                        <li class="">
+                          <a href="/online_docs/community/support_policy.html">Support Policy</a>
+                        </li>
+                      
+                    </ul>
+                  </li>
+                
+              </li>
+              
+            </ul>
+
+            <!-- Link to the project's GitHub repo & Twitter profile -->
+            <ul class="nav navbar-nav navbar-right navbar-links">
+              <li><a href="https://github.com/spinnaker/"><i class="fa fa-github" title='Github'></i></a></li>
+              <li><a href="http://stackoverflow.com/questions/tagged/spinnaker"><i class="fa fa-stack-overflow" title="Stack Overflow"></i></a></li>
+              <li><a href="http://join.spinnaker.io"><i class="fa fa-slack" title='Slack'></i></a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+  <!-- the id is used exclusively for easy access by assistive technology -->
+  <main class="container standard-page" id="main-content">
+    <div class="row">
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+        <div class="row">
+  <div class="col-xs-12 toc-page not-ready">
+    <ul id="markdown-toc">
+  <li><a href="#getting-started" id="markdown-toc-getting-started">Getting started</a>    <ul>
+      <li><a href="#step-1-set-up-your-target-deployment-environment" id="markdown-toc-step-1-set-up-your-target-deployment-environment">Step 1: Set up your target deployment environment</a></li>
+      <li><a href="#step-2-install-spinnaker" id="markdown-toc-step-2-install-spinnaker">Step 2: Install Spinnaker</a></li>
+      <li><a href="#step-3-update-the-spinnaker-configuration-file" id="markdown-toc-step-3-update-the-spinnaker-configuration-file">Step 3: Update the Spinnaker configuration file</a></li>
+      <li><a href="#step-4-start-spinnaker" id="markdown-toc-step-4-start-spinnaker">Step 4. Start Spinnaker</a></li>
+      <li><a href="#step-5-configure-example-pipeline" id="markdown-toc-step-5-configure-example-pipeline">Step 5. Configure example pipeline</a></li>
+      <li><a href="#step-6-stop-spinnaker" id="markdown-toc-step-6-stop-spinnaker">Step 6. Stop Spinnaker</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="todo-put-google-cloud-launcher-instructions-here-cuz-itll-be-so-easy"><strong>TODO: Put Google Cloud Launcher instructions here, cuz it’ll be so easy.</strong></h3>
+
+<h3 id="todo-add-images-to-make-it-easy-to-follow"><strong>TODO: Add images to make it easy to follow.</strong></h3>
+
+<h3 id="todo-make-sure-instructions-are-not-aws-only-or-gce-only"><strong>TODO: Make sure instructions are not AWS-only or GCE-only.</strong></h3>
+
+<h1 id="getting-started">Getting started</h1>
+
+<p>These instructions quickly get Spinnaker up and running on an Amazon
+Web Services (AWS) EC2 or Google Compute Engine (GCE) virtual machine
+(VM) or local machine, then walk you through the steps of setting up
+and using Spinnaker to deploy to and manage clusters on AWS and/or
+GCE.</p>
+
+<p>You will go through the following steps:</p>
+
+<ol>
+  <li>Setup a project representing your target deployment environment on
+either AWS or GCP. This project will house the clusters that are
+deployed and managed by Spinnaker.</li>
+  <li>Install Spinnaker on an AWS EC2 VM, GCE VM, or local machine.</li>
+  <li>Edit a Spinnaker configuration file to populate it with the
+information from Step 1.</li>
+  <li>Start Spinnaker.</li>
+  <li>Configure an example Spinnaker pipeline to bake an image and deploy
+the image to a cluster.</li>
+  <li>When you’re done experimenting, clean everything up and stop Spinnaker.</li>
+</ol>
+
+<p>The first step, which has nothing to do with Spinnaker itself, is by
+far the most complex step.</p>
+
+<h2 id="step-1-set-up-your-target-deployment-environment">Step 1: Set up your target deployment environment</h2>
+
+<p>You need to setup your target deployment environment, which is an AWS
+or GCP project that will house clusters that are deployed to and
+managed by Spinnaker. You can choose to setup only an <a href="#setup-an-aws-project">AWS
+environment</a>, a <a href="#setup-a-google-cloud-platform-project">GCP
+environment</a>, or both. Please
+follow the appropriate instructions below to get your target
+deployment environment(s) setup.</p>
+
+<h3 id="setup-an-aws-project">Setup an AWS project</h3>
+
+<p>If you’d like to have Spinnaker deploy to and manage clusters on AWS,
+you’ll need to have an AWS project setup. If you’ve already got one,
+please skip to the next step. Otherwise, please follow the
+instructions below.</p>
+
+<p>Sign into the <a href="https://console.aws.amazon.com">AWS console</a> and let
+AWS pick a default region where your project resources will be
+allocated. In the rest of this tutorial, we’ll assume that the region
+assigned is <code>us-east-1</code>. If the region selected for your
+project is different from this, please substitue your region
+everywhere <code>us-east-1</code> appears below.</p>
+
+<p>Also, in the instructions below, we’ll assume that your AWS account
+name is <code>my-aws-account</code>. Wherever you see
+<code>my-aws-account</code> appear below, please replace it with your
+AWS account name.</p>
+
+<ol>
+  <li>Click on Networking &gt; VPC.
+    <ul>
+      <li>Click on <strong>Start VPC Wizard</strong>.</li>
+      <li>On the <strong>Step 1: Select a VPC Configuration</strong> screen, make sure that
+<strong>VPC with a Single Public Subnet</strong> is highlighted and click
+<strong>Select</strong>.</li>
+      <li>Name your VPC. Enter <code>defaultvpc</code> in the <strong>VPC name</strong> field.</li>
+      <li>Enter <code>defaultvpc.internal.us-east-1</code> for <strong>Subnet name</strong>.</li>
+      <li>Click <strong>Create VPC</strong>.</li>
+    </ul>
+  </li>
+  <li>Create an EC2 role.
+    <ul>
+      <li>Goto Console &gt; Identity &amp; Access Management &gt; Roles.</li>
+      <li>Click <strong>Create New Role</strong>.</li>
+      <li>Set <strong>Role Name</strong> to <code>BaseIAMRole</code>. Click <strong>Next Step</strong>.</li>
+      <li>On <strong>Select Role Type</strong> screen, hit <strong>Select</strong> for <strong>Amazon EC2</strong>.</li>
+      <li>Click the radio button next to <strong>PowerUserAccess</strong>, then
+click <strong>Next Step</strong>.</li>
+      <li>On <strong>Review</strong> screen, click <strong>Create Role</strong>.</li>
+      <li>EC2 instances launched with Spinnaker will be associated with this
+role.</li>
+    </ul>
+  </li>
+  <li>Create an EC2 Key Pair for connecting to your instances.
+    <ul>
+      <li>Visit Console &gt; EC2 &gt; Key Pairs.</li>
+      <li>Click <strong>Create Key Pair</strong>.</li>
+      <li>Name the key pair <code>my-aws-account-keypair</code>.</li>
+    </ul>
+  </li>
+  <li>Create AWS credentials for Spinnaker.
+    <ul>
+      <li>Console &gt; Identity &amp; Access Management &gt; Users &gt; Create New
+Users. Enter a username and hit <strong>Create</strong>.</li>
+      <li>Create an access key for the user. Click <strong>Download Credentials</strong>,
+ then Save the access key and secret key into
+ <code>~/.aws/credentials</code> as shown
+ <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files">here</a>.</li>
+      <li>Click on the username you entered for a more detailed screen.</li>
+      <li>On the <strong>Summary</strong> page, click on the <strong>Permissions</strong> tab.</li>
+      <li>Click on the <strong>Inline Policies</strong> header, then click the link to
+create an inline policy.</li>
+      <li>Click <strong>Select</strong> for <strong>Policy Generator</strong>.</li>
+      <li>Select <strong>AWS Access and Identity Management</strong> from the <strong>AWS Service</strong> pulldown.</li>
+      <li>Select <strong>PassRole</strong> for <strong>Actions</strong>.</li>
+      <li>Type <code>*</code> (the asterisk character) in the <strong>Amazon Resource Name (ARN)</strong> box.</li>
+      <li>Click <strong>Add Statement</strong>, then <strong>Next Step</strong>.</li>
+      <li>Click <strong>Apply Policy</strong>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="setup-a-google-cloud-platform-project">Setup a Google Cloud Platform project</h3>
+
+<p>If you’d like to have Spinnaker deploy to and manage clusters on GCP,
+you’ll need to have a GCP project setup. If you’ve already got one,
+please skip to the next step. Otherwise, please follow the
+instructions below.</p>
+
+<p>Sign into the <a href="https://console.devleopers.google.com">Google Developer’s
+Console</a> and create a
+project. Call it <code>MySpinnakerProject</code>.</p>
+
+<ol>
+  <li>Enable APIs in the <code>MySpinnakerProject</code> project.
+    <ul>
+      <li>Go to the API Management page.</li>
+      <li>Enable the <a href="https://console.developers.google.com/apis/api/compute_component/overview?project=_">Compute
+ Engine</a>
+ and <a href="https://console.developers.google.com/apis/api/autoscaler/overview?project=_">Compute Engine
+ Autoscaler</a>
+ APIs.</li>
+    </ul>
+  </li>
+  <li>Add and obtain credentials.
+    <ul>
+      <li>Navigate to the <strong>Credentials</strong> tab (if using the beta console, it is
+ in API Manager).</li>
+      <li>Select <strong>Service account</strong> and create a JSON key.</li>
+      <li>Download this key to a file. Google Cloud Platform will pick the
+ name of the file for you. Keep track of the name of the file and
+ where it gets downloaded. You’ll need this information in <a href="#step-3-update-the-spinnaker-configuration-file">Step
+ 3</a>.</li>
+      <li><code>chmod 400</code> this file.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="step-2-install-spinnaker">Step 2: Install Spinnaker</h2>
+
+<p>If you have chosen to run Spinnaker inside an Amazon Web Services or
+Google Compute Engine VM, please ssh into the VM.</p>
+
+<p>Irrespective of the machine on which you have chosen to run Spinnaker,
+at the command prompt, type in (or cut-and-paste) the following
+command:</p>
+
+<pre><code>curl -L https://dl.bintray.com/spinnaker/ospackages/install_spinnaker.sh | bash
+</code></pre>
+
+<h2 id="step-3-update-the-spinnaker-configuration-file">Step 3: Update the Spinnaker configuration file</h2>
+
+<p>Before you can run Spinnaker, you need to update the Spinnaker
+configuration file <code>spinnaker-local.yml</code> with information
+related to your AWS or GCP project and credentials.</p>
+
+<h3 id="required-edits-if-deploying-to-aws">Required edits if deploying to AWS</h3>
+
+<p>If you’re deploying to and managing clusters on AWS, make sure the
+following is set in <code>spinnaker-local.yml</code>:</p>
+
+<pre><code>providers:
+  ...
+  aws:
+    enabled: true
+    defaultRegion: us-east-1
+</code></pre>
+
+<p>If you chose a different region than <code>us-east-1</code>, please
+ensure that <code>defaultRegion</code> is set to the region you
+selected.</p>
+
+<h3 id="required-edits-if-deploying-to-google-cloud-platform">Required edits if deploying to Google Cloud Platform</h3>
+
+<p>If you’re deploying to and managing clusters on Google Cloud Platform,
+make sure the following is set in <code>spinnaker-local.yml</code>:</p>
+
+<pre><code>providers:
+  ...
+  google:
+    enabled: true
+    project: myspinnakerproject
+    jsonPath: &lt;filename containing the JSON key generated in Step 1&gt;
+</code></pre>
+
+<h2 id="step-4-start-spinnaker">Step 4. Start Spinnaker</h2>
+
+<p>To start Spinnaker, simply type:</p>
+
+<pre><code>sudo /opt/spinnaker/start_spinnaker.sh --all
+</code></pre>
+
+<p>The above command starts all Spinnaker components, including Redis and
+Cassandra, which Spinnaker components use to store data. Note that it
+can take several minutes for Spinnaker to start.</p>
+
+<h2 id="step-5-configure-example-pipeline">Step 5. Configure example pipeline</h2>
+
+<p>To walk you through some of the basics with Spinnaker, you’re going to
+setup a Spinnaker pipeline that bakes a virtual machine (VM) image
+containing redis, then deploys that image to a test cluster.</p>
+
+<h3 id="create-a-spinnaker-application">Create a Spinnaker application</h3>
+
+<ul>
+  <li>In Spinnaker, click <strong>Create Application</strong> in the <strong>Actions</strong>
+dropdown.</li>
+  <li>Input <code>example</code> for the <strong>Name</strong> field and your email address for
+the <strong>Owner Email</strong> field.</li>
+  <li>Click inside of the dashed rectangle below the <strong>Accounts</strong> heading.
+    <ul>
+      <li>Click <code>my-aws-account</code> if you are deploying to AWS or
+<code>my-google-account</code> if you are deploying to Google Cloud Platform.</li>
+    </ul>
+  </li>
+  <li>Click on the <strong>Consider only cloud provider health when executing
+tasks</strong> button next to <strong>Instance Health</strong>.</li>
+  <li>Click the <strong>Create</strong> button.</li>
+</ul>
+
+<h3 id="create-and-configure-a-security-group">Create and configure a security group</h3>
+
+<p>Next, you’ll create a security group that specifies traffic firewall
+rules for the cluster. You’ll configure the firewall rules to allow
+all incoming traffic on port 80, for clusters associated with this
+security group.</p>
+
+<ul>
+  <li>Click <strong>SECURITY GROUPS</strong>, then click <strong>Create Security Group</strong>.</li>
+  <li>Input <code>test</code> for the <strong>Detail (optional)</strong> field and
+<code>Test environment</code> for the <strong>Description</strong> field.</li>
+  <li>Click <strong>Next</strong>.</li>
+  <li>Click <strong>Add New Source CIDR</strong> and use the default
+<code>0.0.0.0/0</code> value for the <strong>Source Range</strong> field.</li>
+  <li>Click <strong>Add New Protocol and Port Range</strong>. Use the default <code>TCP</code>
+value for the <strong>Protocol</strong> field. Change <strong>Start Port</strong> and <strong>End
+Port</strong> to <code>80</code>.</li>
+  <li>Click the <strong>Create</strong> button.</li>
+</ul>
+
+<h3 id="create-a-load-balancer">Create a load balancer</h3>
+
+<p>Next, you’ll create a load balancer in Spinnaker.</p>
+
+<ul>
+  <li>Click <strong>LOAD BALANCERS</strong>, then click <strong>Create Load Balancer</strong>.</li>
+  <li>Input <code>test</code> for the <strong>Stack</strong> field, then click the
+<strong>Next</strong> button.</li>
+  <li>Unselect the <strong>Enable health check?</strong> checkbox.</li>
+  <li>Click the <strong>Create</strong> button.</li>
+</ul>
+
+<h3 id="create-a-deployment-pipeline">Create a deployment pipeline</h3>
+
+<p>Your final task is to set up a Spinnaker pipeline. Let’s call it
+<strong>Bake &amp; Deploy to Test</strong>. The pipeline will produce an image
+containing the <code>redis-server</code> package and then deploy
+it. In this tutorial, you’ll trigger the pipeline manually.</p>
+
+<p>To create the pipeline:</p>
+
+<ul>
+  <li>Click <strong>PIPELINES</strong>, then click <strong>Create New Pipeline</strong>.</li>
+  <li>Input <code>Bake &amp; Deploy to Test</code> for the <strong>Pipeline Name</strong>.</li>
+  <li>Click the <strong>Create Pipeline</strong> button.</li>
+</ul>
+
+<h4 id="configure-the-pipeline">Configure the pipeline</h4>
+
+<h4 id="set-up-the-first-stage-of-the-pipeline">Set up the first stage of the pipeline</h4>
+
+<p>You’re now going to create the first stage of the pipeline. It will
+build an image from an existing redis-server package.</p>
+
+<ul>
+  <li>Click <strong>Add stage</strong>.</li>
+  <li>Select <strong>Bake</strong> from the <strong>Type</strong> pulldown menu.</li>
+  <li>Input <code>redis-server</code> for the <strong>Package</strong> field.</li>
+  <li>Click <strong>Save Changes</strong>.</li>
+</ul>
+
+<h4 id="set-up-the-second-stage-of-the-pipeline">Set up the second stage of the pipeline</h4>
+
+<p>You’re now going to setup the second stage of the pipeline. It takes
+the image constructed in the <em>Bake</em> stage and deploys it into a test
+environment.</p>
+
+<ul>
+  <li>Click <strong>Add stage</strong>.</li>
+  <li>Select <strong>Deploy</strong> from the <strong>Type</strong> dropdown.</li>
+  <li>Under the <strong>Clusters</strong> heading, click <strong>Add cluster</strong>.</li>
+  <li>
+    <p>Click the <strong>Continue without a template</strong> button.</p>
+  </li>
+  <li>Next, In the <strong>Configure Deployment Cluster</strong> window, input “test”
+for the <strong>Stack</strong> field.</li>
+  <li>Click the <strong>Next</strong> button.</li>
+  <li>Click the text area next to the <strong>Load Balancers</strong> heading, then
+select <code>example-test</code>. Click the <strong>Next</strong> button.</li>
+  <li>Click the <strong>Security Groups</strong> form field, then click
+<code>example-test (example-test)</code>. Click the <strong>Next</strong>
+button.</li>
+  <li>Click the <strong>Micro Utility</strong> button to set the <strong>Instance Profile</strong>,
+then click the <strong>Next</strong> button.</li>
+  <li>Select the <strong>Micro</strong> size, then click the <strong>Next</strong> button.</li>
+  <li>Input <code>2</code> for the <strong>Number of Instances</strong> field, then click the
+<strong>Add</strong> button.</li>
+  <li>Save the pipeline configuration by clicking the <strong>Save Changes</strong>
+button.</li>
+</ul>
+
+<h3 id="try-it-out">Try it out!</h3>
+
+<ul>
+  <li>Click <strong>PIPELINES</strong> in the navigation bar.</li>
+  <li>Click <strong>Start Manual Execution</strong> for the <strong>Bake &amp; Deploy to Test</strong>
+pipeline.</li>
+  <li>Click <strong>Run</strong>.</li>
+</ul>
+
+<p>Now, watch Spinnaker in action. A <strong>MANUAL START</strong> section will
+appear, and will show progress as the pipeline executes. At any point
+during pipeline execution, click on the horizontal bar to see detailed
+status for any of the stages in the pipeline.</p>
+
+<p>Feel free to navigate around the Spinnaker menus, create new
+pipelines, clusters, server groups, load balancers, and security
+groups, etc. and see what happens.</p>
+
+<p>When you’re ready to stop, don’t forget to cleanup your resources. An
+easy way to do this is to visit the pipelines, clusters, load
+balancers, and security groups pages, click on the ones created and
+select the appropriate <strong>Delete</strong> command from the Actions pulldown on
+the right.</p>
+
+<h2 id="step-6-stop-spinnaker">Step 6. Stop Spinnaker</h2>
+
+<p>To stop Spinnaker, type:</p>
+
+<pre><code>sudo /opt/spinnaker/stop_spinnaker.sh --all
+</code></pre>
+
+<p>The above command stops all Spinnaker components, including Redis and
+Cassandra.</p>
+
+    
+    <div class="row row-gap-medium"></div>
+    
+
+
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="intrasection-navigation">
+        <div class="row">
+          
+          
+            <div class="col-xs-6 text-right next-page-action col-xs-offset-6">
+              <a href="/documentation/user_guide.html">
+                User's Guide
+              </a>
+              <span class="icon icon-arrow-right"></span>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>        
+      </div>
+    </div>
+  </main>
+  
+  <footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+        <div class="row">
+          <div class="col-xs-4 site-footer-item">
+            <a href="https://www.netflix.com" target="_blank">
+              <img class="netflix-logo" src="/images/netflix-logo.svg" alt="Netflix logo">
+            </a>
+          </div>
+          <div class="col-xs-8 text-right site-footer-item footer-links">
+            <div>
+              <a href="https://netflix.github.io/" target="_blank">Netflix Open Source Platform</a><br>
+              <span class="copyright-notice">
+                
+                &copy; 2015
+                NETFLIX, INC. ALL RIGHTS RESERVED
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+  <!-- JQuery (cdn and local fallback) for the bootstrap plugins -->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>if (!window.jQuery) {document.write('<script src="/javascripts/jquery-2.1.4.min.js"><\/script>');}</script>
+<script src="/javascripts/bootstrap-modified.min.js"></script>
+<script src="/javascripts/modernizr-custom.min.js"></script>
+<script src="/javascripts/prettify/prettify-bundle.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    // =============================================
+    // = Initialize Table of Contents (If Present) =
+    // =============================================
+    
+    // Since we can't touch the kramdown autogenrated TOC code,
+    // instead just wrap it in the sitewide TOC class, since the rest
+    // of it is very reasonably structured.
+    $('#markdown-toc').wrap('<div class="table-of-contents"></div>');
+    
+    // Make the kramdown generated toc into a valid bootstrap nav
+    $('#markdown-toc').addClass('nav');
+    
+    // To prevent flash-of-awkwardly-styled-content, the toc is hidden until
+    // the processing above is done.
+    $('.toc-page').removeClass('not-ready');
+    $('body').scrollspy({
+      target: '.table-of-contents', 
+      offset: 75
+    });
+    
+
+    // ========================
+    // = Prettify Code Blocks =
+    // ========================
+    
+    // Transform all pre blocks that were presumably autogenerated by markdown so
+    // they'll be prettified too
+    $('pre:not([class])').addClass('prettyprint source');
+    
+    // Kramdown puts the language on the code element, but we want it on the pre
+    // so the background can be styled too and we can vary the theme depending on
+    // which language it is. The simplest solution is just to grab all the classes.
+    $('.prettyprint').each(function (index, prettyPrintNode) {
+      var classList = $(prettyPrintNode).children('code').attr('class');
+      $(prettyPrintNode).addClass(classList);
+    })
+    
+    window.prettyPrint();
+    
+    // Copied directly from the linenumbers.js file included with the
+    // default JSDoc theme.
+    (function () {
+        var source = document.getElementsByClassName('prettyprint source linenums');
+        var i = 0;
+        var lineNumber = 0;
+        var lineId;
+        var lines;
+        var totalLines;
+        var anchorHash;
+
+        if (source && source[0]) {
+            anchorHash = document.location.hash.substring(1);
+            lines = source[0].getElementsByTagName('li');
+            totalLines = lines.length;
+
+            for (; i < totalLines; i++) {
+                lineNumber++;
+                lineId = 'line' + lineNumber;
+                lines[i].id = lineId;
+                if (lineId === anchorHash) {
+                    lines[i].className += ' selected';
+                }
+            }
+        }
+    })();
+  });    
+</script>
+
+
+</body>
+
+  
+</html>
