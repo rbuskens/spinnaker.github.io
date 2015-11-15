@@ -28,5 +28,5 @@ shortly.
 
 In the meantime, if you're really excited about contributing and don't
 want to wait until we have all of this worked out, please reach out to
-us on [Slack](join.spinnaker.io). We really would love to
+us on [Slack](http://join.spinnaker.io). We really would love to
 accept your patches!
