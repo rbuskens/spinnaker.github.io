@@ -42,5 +42,5 @@ channel for user-related discussions and the <code>#dev</code> channel for
 developer-related discussions. You can participate in the Spinnaker
 discussions [here](https://spinnakerteam.slack.com). Slack
 requires registration, but the Spinnaker team is open invitation to
-anyone to register [here](http://join.spinnaker.io) Feel free to come and
+anyone to register [here](http://join.spinnaker.io). Feel free to come and
 ask any and all questions.
