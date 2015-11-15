@@ -14,6 +14,8 @@ lang: en
 
 ### **TODO: Make sure instructions are not AWS-only or GCE-only.**
 
+### **TODO: Add instructions on how to reate an inline policy for IAM  granting PassRole on the resource.**
+
 # Getting started
 
 These instructions quickly get Spinnaker up and running on an Amazon
@@ -68,27 +70,47 @@ name is <code>my-aws-account</code>. Wherever you see
 AWS account name.
 
 1. Click on Networking > VPC.
-1. Name your VPC. Edit the name tag, and give it the value
-<code>defaultvpc</code>.
-1. Name your subnets. Edit the name tag and give it the value
-<code>defaultvpc.internal.us-east-1</code>.
-1. Create an EC2 role called </code>BaseIAMRole</code>.
-  * Goto Console > Identity & Access Management > Roles > Create New
-    Role. Select Amazon EC2.
-  * You don't have to apply any policies to this role. EC2 instances
-    launched with Spinnaker will be associated with this role.
+* Click on **Start VPC Wizard**.
+* On the **Step 1: Select a VPC Configuration** screen, make sure that
+  **VPC with a Single Public Subnet** is highlighted and click
+  **Select**.
+* Name your VPC. Enter <code>defaultvpc</code> in the **VPC name** field.
+* Enter <code>defaultvpc.internal.us-east-1</code> for **Subnet name**.
+* Click **Create VPC**.
+
+1. Create an EC2 role.
+* Goto Console > Identity & Access Management > Roles.
+* Click **Create New Role**.
+* Set **Role Name** to <code>BaseIAMRole</code>. Click **Next Step**.
+* On **Select Role Type** screen, hit **Select** for **Amazon EC2**.
+* Click the radio button next to **PowerUserAccess**, then
+  click **Next Step**.
+* On **Review** screen, click **Create Role**.
+* EC2 instances launched with Spinnaker will be associated with this
+role.
+
 1. Create an EC2 Key Pair for connecting to your instances.
-  * Visit Console > EC2 > Key Pairs > Create Key Pair. Name the key
-    pair <code>my-aws-account-keypair</code>.
+* Visit Console > EC2 > Key Pairs.
+* Click **Create Key Pair**.
+* Name the key pair <code>my-aws-account-keypair</code>.
+
 1. Create AWS credentials for Spinnaker.
-  * Console > Identity & Access Management > Users > Create New
-    Users. Enter a username.
-  * Create an access key for the user. Save the access key and secret
-    key into <code>~/.aws/credentials</code> as shown
+* Console > Identity & Access Management > Users > Create New
+  Users. Enter a username and hit **Create**.
+* Create an access key for the user. Click **Download Credentials**,
+    then Save the access key and secret key into
+    <code>~/.aws/credentials</code> as shown
     [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files).
-  * Edit the user Permissions. Attach a Policy to the user granting
-    PowerUserAccess. Create an inline policy for IAM granting PassRole
-    on the resource.
+* Click on the username you entered for a more detailed screen.
+* On the **Summary** page, click on the **Permissions** tab.
+* Click on the **Inline Policies** header, then click the link to
+  create an inline policy.
+* Click **Select** for **Policy Generator**.
+* Select **AWS Access and Identity Management** from the **AWS Service** pulldown.
+* Select **PassRole** for **Actions**.
+* Type "*" (the asterisk character) in the **Amazon Resource Name (ARN)** box.
+* Click **Add Statement**, then **Next Step**.
+* Click **Apply Policy**.
 
 ### Setup a Google Cloud Platform project
 
@@ -99,13 +121,7 @@ instructions below.
 
 Sign into the [Google Developer's
 Console](https://console.devleopers.google.com) and create a
-project. Call it <code>MySpinnakerProject</code>. Take note of the
-project id, as you'll need this when editing the Spinnaker
-configuration file in [Step
-3](#step-3-update-the-spinnaker-configuration-file). it should be of
-the form <code>myspinnakerproject-xxxx</code>, where
-<code>myspinnakerproject</code> is the lowercase translation of your
-project and <code>xxxx</code> is a (typically four-digit) number.
+project. Call it <code>MySpinnakerProject</code>.
 
 1. Enable APIs in the <code>MySpinnakerProject</code> project.
   * Go to the API Management page.
@@ -165,7 +181,7 @@ make sure the following is set in <code>spinnaker-local.yml</code>:
       ...
       google:
         enabled: true
-        project: <your project id from Step 1>
+        project: myspinnakerproject
         jsonPath: <filename containing the JSON key generated in Step 1>
 
 ## Step 4. Start Spinnaker
@@ -175,12 +191,128 @@ To start Spinnaker, simply type:
     sudo /opt/spinnaker/start_spinnaker.sh --all
 
 The above command starts all Spinnaker components, including Redis and
-Cassandra, which Spinnaker components use to store data.
+Cassandra, which Spinnaker components use to store data. Note that it
+can take several minutes for Spinnaker to start.
 
 ## Step 5. Configure example pipeline
 
 **CURRENT THINKING: ON MANUAL TRIGGER, BAKE AN IMAGE (REDIS) AND
   DEPLOY IT TO A TEST ENVIRONMENT**
+
+### Create a Spinnaker application
+
+* In Spinnaker, click **Create Application** in the **Actions**
+  dropdown.
+* Input "example" for the **Name** field and your email address for
+*the *Owner Email** field.
+* Click inside of the dashed rectangle below the **Accounts** heading.
+  * Click "my-aws-account" if you are deploying to AWS or
+"my-google-account" if you are deploying to Google Cloud Platform.
+* Click on the **Consider only cloud provider health when executing
+  tasks** button next to **Instance Health**.
+* Click the **Create** button.
+
+### Create and configure a security group
+
+Next, you'll create a security group that specifies traffic firewall
+rules for the cluster. You'll configure the firewall rules to allow
+all incoming traffic on port 80, for clusters associated with this
+security group.
+
+* Click **SECURITY GROUPS**, then click **Create Security Group**.
+* Input <code>test</code> for the **Detail (optional)** field and
+<code>Test environment</code> for the **Description** field.
+* Click **Next**.
+* Click **Add New Source CIDR** and use the default
+  <code>0.0.0.0/0</code> value for the **Source Range** field.
+* Click **Add New Protocol and Port Range**. Use the default <code>TCP</code>
+  value for the **Protocol** field. Change **Start Port** and **End
+  Port** to <code>80</code>.
+* Click the **Create** button.
+
+### Create a load balancer
+
+Next, you'll create a load balancer in Spinnaker.
+
+* Click **LOAD BALANCERS**, then click **Create Load Balancer**.
+* Input <code>test</code> for the **Stack** field, then click the
+  **Next** button.
+* Unselect the **Enable health check?** checkbox.
+* Click the **Create** button.
+
+### Create a deployment pipeline
+
+Your final task is to set up a Spinnaker pipeline. Let's call it
+**Bake & Deploy to Test**. The pipeline will produce an image
+containing the <code>redis-server</code> package and then deploy
+it. In this tutorial, you'll trigger the pipeline manually.
+
+To create the pipeline:
+
+* Click **PIPELINES**, then click **Create New Pipeline**.
+* Input <code>Bake & Deploy to Test</code> for the **Pipeline Name**.
+* Click the **Create Pipeline** button.
+
+#### Configure the pipeline
+
+#### Set up the first stage of the pipeline
+
+You're now going to create the first stage of the pipeline. It will
+build an image from an existing <code>redis-server</code> package.
+
+* Click **Add stage**.
+* Select **Bake** from the **Type** pulldown menu.
+* Input "redis-server" for the **Package** field.
+* Click **Save Changes**.
+
+#### Set up the second stage of the pipeline
+
+You're now going to setup the second stage of the pipeline. It takes
+the image constructed in the *Bake* stage and deploys it into a test
+environment.
+
+* Click **Add stage**.
+* Select **Deploy** from the **Type** dropdown.
+* Under the **Clusters** heading, click **Add cluster**.
+* Click the **Continue without a template** button.
+
+* Next, In the **Configure Deployment Cluster** window, input "test"
+for the **Stack** field.
+* Click the **Next** button.
+* Click the text area next to the **Load Balancers** heading, then
+  select <code>example-test</code>. Click the **Next** button.
+* Click the **Security Groups** form field, then click
+  <code>example-test (example-test)</code>. Click the **Next**
+  button.
+* Click the **Micro Utility** button to set the **Instance Profile**,
+  then click the **Next** button.
+* Select the **Micro** size, then click the **Next** button.
+* Input "2" for the **Number of Instances** field, then click the
+  **Add** button.
+* Save the pipeline configuration by clicking the **Save Changes**
+  button.
+
+### Try it out!
+
+* Click **PIPELINES** in the navigation bar.
+* Click **Start Manual Execution** for the **Bake & Deploy to Test**
+  pipeline.
+* Click **Run**.
+
+Now, watch Spinnaker in action. A **MANUAL START** section will
+appear, and will show progress as the pipeline executes. At any point
+during pipeline execution, click on the horizontal bar to see detailed
+status.
+
+Feel free to navigate around the Spinnaker menus, create new
+pipelines, clusters, server groups, load balancers, and security
+groups, etc. and see what happens.
+
+When you're ready to stop, don't forget to cleanup your resources. An
+easy way to do this is to visit the pipelines, clusters, load
+balancers, and security groups pages, click on the ones created and
+select the appropriate **Delete** command from the Actions pulldown on
+the right.
 
 ## Step 6. Stop Spinnaker
 
