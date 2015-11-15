@@ -15,6 +15,8 @@ lang: en
 ### **TODO: Make sure instructions are not AWS-only or GCE-only.**
 
 ### **TODO: Add instructions on how to reate an inline policy for IAM  granting PassRole on the resource.**
+See https://github.com/spinnaker/clouddriver/blob/master/clouddriver-aws/README.md
+(TODO - move that, embed that here, or ?)
 
 # Getting started
 
