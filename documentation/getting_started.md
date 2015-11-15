@@ -14,10 +14,6 @@ lang: en
 
 ### **TODO: Make sure instructions are not AWS-only or GCE-only.**
 
-### **TODO: Add instructions on how to reate an inline policy for IAM  granting PassRole on the resource.**
-See https://github.com/spinnaker/clouddriver/blob/master/clouddriver-aws/README.md
-(TODO - move that, embed that here, or ?)
-
 # Getting started
 
 These instructions quickly get Spinnaker up and running on an Amazon
@@ -110,7 +106,7 @@ role.
 * Click **Select** for **Policy Generator**.
 * Select **AWS Access and Identity Management** from the **AWS Service** pulldown.
 * Select **PassRole** for **Actions**.
-* Type "*" (the asterisk character) in the **Amazon Resource Name (ARN)** box.
+* Type <code>*</code> (the asterisk character) in the **Amazon Resource Name (ARN)** box.
 * Click **Add Statement**, then **Next Step**.
 * Click **Apply Policy**.
 
@@ -133,9 +129,9 @@ project. Call it <code>MySpinnakerProject</code>.
     Autoscaler](https://console.developers.google.com/apis/api/autoscaler/overview?project=_)
     APIs.
 1. Add and obtain credentials.
-  * Navigate to the Credentials tab (if using the beta console, it is
+  * Navigate to the **Credentials** tab (if using the beta console, it is
     in API Manager).
-  * Select "Service account" and create a JSON key.
+  * Select **Service account** and create a JSON key.
   * Download this key to a file. Google Cloud Platform will pick the
     name of the file for you. Keep track of the name of the file and
     where it gets downloaded. You'll need this information in [Step
@@ -198,18 +194,19 @@ can take several minutes for Spinnaker to start.
 
 ## Step 5. Configure example pipeline
 
-**CURRENT THINKING: ON MANUAL TRIGGER, BAKE AN IMAGE (REDIS) AND
-  DEPLOY IT TO A TEST ENVIRONMENT**
+To walk you through some of the basics with Spinnaker, you're going to
+setup a Spinnaker pipeline that bakes a virtual machine (VM) image
+containing redis, then deploys that image to a test cluster.
 
 ### Create a Spinnaker application
 
 * In Spinnaker, click **Create Application** in the **Actions**
   dropdown.
-* Input "example" for the **Name** field and your email address for
-*the *Owner Email** field.
+* Input <code>example</code> for the **Name** field and your email address for
+the **Owner Email** field.
 * Click inside of the dashed rectangle below the **Accounts** heading.
-  * Click "my-aws-account" if you are deploying to AWS or
-"my-google-account" if you are deploying to Google Cloud Platform.
+  * Click <code>my-aws-account</code> if you are deploying to AWS or
+<code>my-google-account</code> if you are deploying to Google Cloud Platform.
 * Click on the **Consider only cloud provider health when executing
   tasks** button next to **Instance Health**.
 * Click the **Create** button.
@@ -260,11 +257,11 @@ To create the pipeline:
 #### Set up the first stage of the pipeline
 
 You're now going to create the first stage of the pipeline. It will
-build an image from an existing <code>redis-server</code> package.
+build an image from an existing redis-server package.
 
 * Click **Add stage**.
 * Select **Bake** from the **Type** pulldown menu.
-* Input "redis-server" for the **Package** field.
+* Input <code>redis-server</code> for the **Package** field.
 * Click **Save Changes**.
 
 #### Set up the second stage of the pipeline
@@ -289,7 +286,7 @@ for the **Stack** field.
 * Click the **Micro Utility** button to set the **Instance Profile**,
   then click the **Next** button.
 * Select the **Micro** size, then click the **Next** button.
-* Input "2" for the **Number of Instances** field, then click the
+* Input <code>2</code> for the **Number of Instances** field, then click the
   **Add** button.
 * Save the pipeline configuration by clicking the **Save Changes**
   button.
@@ -304,7 +301,7 @@ for the **Stack** field.
 Now, watch Spinnaker in action. A **MANUAL START** section will
 appear, and will show progress as the pipeline executes. At any point
 during pipeline execution, click on the horizontal bar to see detailed
-status.
+status for any of the stages in the pipeline.
 
 Feel free to navigate around the Spinnaker menus, create new
 pipelines, clusters, server groups, load balancers, and security
