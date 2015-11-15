@@ -1,3 +1,11 @@
-### Easy to extend and integrate    
+### Open Source
 
-Spinnaker offers a robust API that is easy to extend. Plug in your own stages and providers.
+<p style="text-align: justify">
+Have an idea for a new pipeline stage or cloud provider integration? Community involvement is encouraged.
+</p>
+<p>
+<strong>Pull requests are gladly accepted.</strong>
+</p>
+<p>
+<img src="images/cloudfoundry.png" style="display: block; margin-left: auto; margin-right: auto; border:0px"/>
+</p>
