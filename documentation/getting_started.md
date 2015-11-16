@@ -248,11 +248,10 @@ it. In this tutorial, you'll trigger the pipeline manually.
 
 To create the pipeline:
 
-* Click **PIPELINES**, then click **Create New Pipeline**.
+* Click **PIPELINES**, then click **Configure** and select **Create
+  New Pipeline** from the dropdown.
 * Input <code>Bake & Deploy to Test</code> for the **Pipeline Name**.
 * Click the **Create Pipeline** button.
-
-#### Configure the pipeline
 
 #### Set up the first stage of the pipeline
 
