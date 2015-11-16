@@ -73,8 +73,7 @@ AWS account name.
 * Click **Create New Role**.
 * Set **Role Name** to <code>BaseIAMRole</code>. Click **Next Step**.
 * On **Select Role Type** screen, hit **Select** for **Amazon EC2**.
-* Click the radio button next to **PowerUserAccess**, then
-  click **Next Step**.
+* Click **Next Step**.
 * On **Review** screen, click **Create Role**.
 * EC2 instances launched with Spinnaker will be associated with this
 role.
@@ -94,6 +93,9 @@ role.
     [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files).
 * Click on the username you entered for a more detailed screen.
 * On the **Summary** page, click on the **Permissions** tab.
+* Click **Attach Policy**.
+* Click the radio button next to **PowerUserAccess**, then
+  click **Next Step**.
 * Click on the **Inline Policies** header, then click the link to
   create an inline policy.
 * Click **Select** for **Policy Generator**.
@@ -327,12 +329,14 @@ for the **Stack** field.
 1. Click the **Security Groups** form field, then click
   <code>example-test (example-test)</code>. Click the **Next**
   button.
-1. Click the **Micro Utility** button to set the **Instance Profile**,
-  then click the **Next** button.
-
-1. If running on AWS, select **Medium** under **Micro Utility: m3**.
-1. If running on GCP, select the **Micro** size.
-1. Click the **Next** button.
+1. If running on AWS
+  * Click on the **High Memory** button to set the **Instance
+    Profile**, then click **Next**.
+  * Select the **2xlarge** size, then click **Next**.
+1. If running on GCP
+  * Click on the **Micro Utility** button to set the **Instance
+    Profile**, then click **Next**.
+  * If running on GCP, select the **Micro** size, then click **Next**.
 1. Input <code>2</code> for the **Number of Instances** field, then click the
   **Add** button.
 1. Save the pipeline configuration by clicking the **Save Changes**
