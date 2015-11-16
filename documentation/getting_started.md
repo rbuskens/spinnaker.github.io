@@ -139,7 +139,7 @@ either AWS or Google Cloud Platform. While you have the option of
 selecting the machine type, we strongly recommend using a machine with
 8 cores and at least 50GB RAM. If you'd like to run Spinnaker on your
 local machine, feel free to skip this step and move on to [Step
-2](#set-up-your-target-deployment-environment).
+3](#step-3-install-and-run-spinnaker).
 
 ### Setup a virtual machine to run Spinnaker on AWS
 
