@@ -134,8 +134,9 @@ local machine, feel free to skip this step and move on to [Step
 
 ### AWS Setup
 
-1. Create an AWS virtual machine.
-* Go to [AWS Console](https://console.aws.amazon.com) > AWS Identity & Access
+Create an AWS virtual machine.
+
+1. Go to [AWS Console](https://console.aws.amazon.com) > AWS Identity & Access
   Management > Roles.
 * Click on **Create New Role**.
 * Type "spinnakerRole" in the **Role Name** field. Hit **Next Step**.
