@@ -6,6 +6,3 @@ Have an idea for a new pipeline stage or cloud provider integration? Community i
 <p>
 <strong>Pull requests are gladly accepted.</strong>
 </p>
-<p>
-<img src="images/cloudfoundry.png" style="display: block; margin-left: auto; margin-top:85px; margin-right: auto; border:0px"/>
-</p>
