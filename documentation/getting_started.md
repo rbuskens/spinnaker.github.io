@@ -40,7 +40,7 @@ environment](#setup-a-google-cloud-platform-project), or both. Please
 follow the appropriate instructions below to get your target
 deployment environment(s) setup.
 
-### Setup an AWS project
+### AWS Setup
 
 If you'd like to have Spinnaker deploy to and manage clusters on AWS,
 you'll need to have an AWS project setup. If you've already got one,
@@ -103,7 +103,7 @@ role.
 * Click **Add Statement**, then **Next Step**.
 * Click **Apply Policy**.
 
-### Setup a Google Cloud Platform project
+### Google Cloud Platform Setup
 
 If you'd like to have Spinnaker deploy to and manage clusters on GCP,
 you'll need to have a GCP project setup. If you've already got one,
@@ -112,9 +112,9 @@ instructions below.
 
 Sign into the [Google Developer's
 Console](https://console.developers.google.com) and create a
-project. Call it <code>MySpinnakerProject</code>.
+project. Call it <code>my-spinnaker-project</code>.
 
-1. Enable APIs in the <code>MySpinnakerProject</code> project.
+1. Enable APIs in the <code>my-spinnaker-project</code> project.
   * Go to the API Management page.
   * Enable the [Compute
     Engine](https://console.developers.google.com/apis/api/compute_component/overview?project=_)
@@ -131,7 +131,7 @@ selecting the machine type, we strongly recommend using a machine with
 local machine, feel free to skip this step and move on to [Step
 3](#step-3-install-and-run-spinnaker).
 
-### Setup a virtual machine to run Spinnaker on AWS
+### AWS Setup
 
 1. Create an AWS virtual machine.
 * Goto [Console](https://console.aws.amazon.com) > AWS Identity & Access
@@ -167,7 +167,7 @@ local machine, feel free to skip this step and move on to [Step
 
           ssh spinnaker
 
-### Setup a virtual machine to run Spinnaker on Google Cloud Platform
+### Google Cloud Platform Setup
 
 There are multiple ways to setup a virtual machine on Google Cloud
 Platform for running Spinnaker. The instructions here do this by using
@@ -221,16 +221,15 @@ containing redis, then deploys that image to a test cluster.
 
 ### Create a Spinnaker application
 
-* In Spinnaker, click **Create Application** in the **Actions**
-  dropdown.
-* Input <code>example</code> for the **Name** field and your email address for
+1. In Spinnaker, click **Actions** > **Create Application**
+  1. Input <code>example</code> for the **Name** field and your email address for
 the **Owner Email** field.
-* Click inside of the dashed rectangle below the **Accounts** heading.
+1. Click inside of the dashed rectangle beside the **Accounts** heading.
   * Click <code>my-aws-account</code> if you are deploying to AWS or
 <code>my-google-account</code> if you are deploying to Google Cloud Platform.
-* Click on the **Consider only cloud provider health when executing
+1. Click on the **Consider only cloud provider health when executing
   tasks** button next to **Instance Health**.
-* Click the **Create** button.
+1. Click the **Create** button.
 
 ### Create and configure a security group
 
@@ -239,62 +238,62 @@ rules for the cluster. You'll configure the firewall rules to allow
 all incoming traffic on port 80, for clusters associated with this
 security group.
 
-* Click **SECURITY GROUPS**, then click **Create Security Group**.
-* Input <code>test</code> for the **Detail (optional)** field and
+1. Click **SECURITY GROUPS**, then click the **+** button to create a security group.
+1. Input <code>test</code> for the **Detail (optional)** field and
 <code>Test environment</code> for the **Description** field.
-* Select **defaultvpc** as the **VPC** field.
-* Click **Next**.
-* If running on AWS
+1. Select **defaultvpc** as the **VPC** field.
+1. Click **Next**.
+1. If running on AWS
   * Click **Add new Security Group Rule**.
   * Click **default** on the **Security Group** dropdown.
   * Change **Start Port** and **End Port** to <code>80</code>.
-* If running on GCP
+1. If running on GCP
   * Click **Add New Source CIDR** and use the default
     <code>0.0.0.0/0</code> value for the **Source Range** field.
   * Click **Add New Protocol and Port Range**. Use the default
   <code>TCP</code> value for the **Protocol** field. Change **Start
   Port** and **End Port** to <code>80</code>.
-* Click the **Create** button.
+1. Click the **Create** button.
 
 ### Create a load balancer
 
 Next, you'll create a load balancer in Spinnaker.
 
-* Click **LOAD BALANCERS**, then click **Create Load Balancer**.
-* Input <code>test</code> for the **Stack** field.
-* If running on AWS, select **internal (defaultvpc)** from the **VPC
+1. Click **LOAD BALANCERS**, then click the **+** button to create a load balancer.
+1. Input <code>test</code> for the **Stack** field.
+1. If running on AWS, select **internal (defaultvpc)** from the **VPC
   Subnet** dropdown.
-* Click the **Next** button.
-* If running on AWS
+1. Click the **Next** button.
+1. If running on AWS
   * Select **example-test** from the **Security Groups** dropdown.
   * Hit **Next**, then **Create**.
-* If running on GCP
+1. If running on GCP
   * Unselect the **Enable health check?** checkbox.
-* Click the **Create** button.
+1. Click the **Create** button.
 
 ### Create a deployment pipeline
 
-Your final task is to set up a Spinnaker pipeline. Let's call it
+Your final task is to set up a Spinnaker pipeline. Let's name it
 **Bake & Deploy to Test**. The pipeline will produce an image
 containing the <code>redis-server</code> package and then deploy
 it. In this tutorial, you'll trigger the pipeline manually.
 
 To create the pipeline:
 
-* Click **PIPELINES**, then click **Configure** and select **Create
-  New Pipeline** from the dropdown.
-* Input <code>Bake & Deploy to Test</code> for the **Pipeline Name**.
-* Click the **Create Pipeline** button.
+1. Click **PIPELINES**, then click **Configure** and select **Create
+  New...** from the dropdown.
+1. Input <code>Bake & Deploy to Test</code> for the **Pipeline Name**.
+1. Click the **Create Pipeline** button.
 
 #### Set up the first stage of the pipeline
 
 You're now going to create the first stage of the pipeline. It will
 build an image from an existing redis-server package.
 
-* Click **Add stage**.
-* Select **Bake** from the **Type** pulldown menu.
-* Input <code>redis-server</code> for the **Package** field.
-* Click **Save Changes**.
+1. Click **Add stage**.
+1. Select **Bake** from the **Type** pulldown menu.
+1. Input <code>redis-server</code> for the **Package** field.
+1. Click **Save Changes**.
 
 #### Set up the second stage of the pipeline
 
@@ -302,39 +301,38 @@ You're now going to setup the second stage of the pipeline. It takes
 the image constructed in the *Bake* stage and deploys it into a test
 environment.
 
-* Click **Add stage**.
-* Select **Deploy** from the **Type** dropdown.
-* If deploying to AWS
-  * Under **Server Groups**, click **Add Server Group**.
-* If deploying to GCP
-  * Under the **Clusters** heading, click **Add cluster**.
-* Click the **Continue without a template** button.
+1. Click **Add stage**.
+1. Select **Deploy** from the **Type** dropdown.
+1. Under the **Server Groups** heading, click **Add server group**.
+1. Click the **Continue without a template** button.
 
-* Next, In the **Configure Deployment Cluster** window, input "test"
+1. Next, In the **Configure Deployment Cluster** window, input "test"
 for the **Stack** field.
-* If running on AWS, select **defaultvpc** under **VPC Subnet**.
-* Click the **Next** button.
-* Click the text area next to the **Load Balancers** heading, then
+
+1. If running on AWS, select **defaultvpc** under **VPC Subnet**.
+1. Click the **Next** button.
+1. Click the text area next to the **Load Balancers** heading, then
   select <code>example-test</code>. Click the **Next** button.
-* Click the **Security Groups** form field, then click
+1. Click the **Security Groups** form field, then click
   <code>example-test (example-test)</code>. Click the **Next**
   button.
-* Click the **Micro Utility** button to set the **Instance Profile**,
+1. Click the **Micro Utility** button to set the **Instance Profile**,
   then click the **Next** button.
-* If running on AWS, select **Medium** under **Micro Utility: m3**.
-* If running on GCP, select the **Micro** size.
-* Click the **Next** button.
-* Input <code>2</code> for the **Number of Instances** field, then click the
+
+1. If running on AWS, select **Medium** under **Micro Utility: m3**.
+1. If running on GCP, select the **Micro** size.
+1. Click the **Next** button.
+1. Input <code>2</code> for the **Number of Instances** field, then click the
   **Add** button.
-* Save the pipeline configuration by clicking the **Save Changes**
+1. Save the pipeline configuration by clicking the **Save Changes**
   button.
 
 ### Try it out!
 
-* Click **PIPELINES** in the navigation bar.
-* Click **Start Manual Execution** for the **Bake & Deploy to Test**
+1. Click **PIPELINES** in the navigation bar.
+1. Click **Start Manual Execution** for the **Bake & Deploy to Test**
   pipeline.
-* Click **Run**.
+1. Click **Run**.
 
 Now, watch Spinnaker in action. A **MANUAL START** section will
 appear, and will show progress as the pipeline executes. At any point
