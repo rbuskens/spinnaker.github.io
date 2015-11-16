@@ -134,18 +134,18 @@ local machine, feel free to skip this step and move on to [Step
 
 ### AWS Setup
 
-1. Create an AWS virtual machine.
-* Goto [Console](https://console.aws.amazon.com) > AWS Identity & Access
+Create an AWS virtual machine.
+
+1. Goto [AWS Console](https://console.aws.amazon.com) > AWS Identity & Access
   Management > Roles.
 * Click on **Create New Role**.
 * Type "spinnakerRole" in the **Role Name** field. Hit **Next Step**.
 * Click **Select** for the **Amazon EC2** service.
 * Select the radio button next to **PowerUserAccess**, then click
   **Next Step**, followed by **Create Role**.
-* Goto [Console](https://console.aws.amazon.com) > EC2.
+* Goto [AWS Console](https://console.aws.amazon.com) > EC2.
 * Click **Launch Instance**.
-* Click **Select** for the **Ubuntu Server 14.04 LTS (HVM), SSD Volume
-  Type - ami-5189a661** image.
+* Click **Select** for the **Spinnaker-Ubuntu-14.04-2 - ami-04e1f065** image.
 * Under **Step 2: Choose an Instance Type**, click the radio button
   for **m4.large**, then click **Next: Configure Instance Details**.
 * Set the **Auto-assign Public IP** field to **Enable**, and the **IAM
