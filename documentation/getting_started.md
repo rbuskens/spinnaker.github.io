@@ -61,7 +61,7 @@ name is <code>my-aws-account</code>. Wherever you see
 <code>my-aws-account</code> appear below, please replace it with your
 AWS account name.
 
-1. Click on Networking > VPC.
+1. Goto [Console](https://console.aws.amazon.com) > VPC.
 * Click on **Start VPC Wizard**.
 * On the **Step 1: Select a VPC Configuration** screen, make sure that
   **VPC with a Single Public Subnet** is highlighted and click
@@ -71,7 +71,7 @@ AWS account name.
 * Click **Create VPC**.
 
 1. Create an EC2 role.
-* Goto Console > Identity & Access Management > Roles.
+* Goto [Console](https://console.aws.amazon.com) > AWS Identity & Access Management > Roles.
 * Click **Create New Role**.
 * Set **Role Name** to <code>BaseIAMRole</code>. Click **Next Step**.
 * On **Select Role Type** screen, hit **Select** for **Amazon EC2**.
@@ -82,13 +82,14 @@ AWS account name.
 role.
 
 1. Create an EC2 Key Pair for connecting to your instances.
-* Visit Console > EC2 > Key Pairs.
+* Visit [Console](https://console.aws.amazon.com) > EC2 > Key Pairs.
 * Click **Create Key Pair**.
 * Name the key pair <code>my-aws-account-keypair</code>.
+* AWS will download file <code>my-aws-account-keypair.pem</code> to
+  your computer. <code>chmod 400</code> the file.
 
 1. Create AWS credentials for Spinnaker.
-* Console > Identity & Access Management > Users > Create New
-  Users. Enter a username and hit **Create**.
+* Goto [Console](https://console.aws.amazon.com) > AWS Identity & Access Management > Users > Create New Users. Enter a username and hit **Create**.
 * Create an access key for the user. Click **Download Credentials**,
     then Save the access key and secret key into
     <code>~/.aws/credentials</code> as shown
@@ -98,7 +99,7 @@ role.
 * Click on the **Inline Policies** header, then click the link to
   create an inline policy.
 * Click **Select** for **Policy Generator**.
-* Select **AWS Access and Identity Management** from the **AWS Service** pulldown.
+* Select **AWS Identity and Access Management** from the **AWS Service** pulldown.
 * Select **PassRole** for **Actions**.
 * Type <code>*</code> (the asterisk character) in the **Amazon Resource Name (ARN)** box.
 * Click **Add Statement**, then **Next Step**.
@@ -122,15 +123,6 @@ project. Call it <code>MySpinnakerProject</code>.
     and [Compute Engine
     Autoscaler](https://console.developers.google.com/apis/api/autoscaler/overview?project=_)
     APIs.
-1. Add and obtain credentials.
-  * Navigate to the **Credentials** tab (if using the beta console, it is
-    in API Manager).
-  * Select **Service account** and create a JSON key.
-  * Download this key to a file. Google Cloud Platform will pick the
-    name of the file for you. Keep track of the name of the file and
-    where it gets downloaded. You'll need this information in [Step
-    3](#step-3-update-the-spinnaker-configuration-file).
-  * <code>chmod 400</code> this file.
 
 ## Step 2: Set up a virtual machine to run Spinnaker
 
@@ -144,7 +136,7 @@ local machine, feel free to skip this step and move on to [Step
 ### Setup a virtual machine to run Spinnaker on AWS
 
 1. Create an AWS virtual machine.
-* Goto [Console](https://console.aws.amazon.com) > Identity & Access
+* Goto [Console](https://console.aws.amazon.com) > AWS Identity & Access
   Management > Roles.
 * Click on **Create New Role**.
 * Type "spinnakerRole" in the **Role Name** field. Hit **Next Step**.
@@ -161,19 +153,21 @@ local machine, feel free to skip this step and move on to [Step
   role** to "spinnakerRole".
 * Click **Review and Launch**.
 * Click **Launch**.
+* Click **View Instances**. Make note of the **Public IP** field for
+  the newly-created instance. This will be needed in the next step.
 
 1. Shell in and open an SSH tunnel from your host to the virtual machine.
 * Add this to ~/.ssh/config
 
           Host spinnaker
-            HostName <IP address of the virtual machine where Spinnaker will run>
-            IdentityFile </path/to/private/AWS/key>
+            HostName <Public IP address of instance you just created>
+            IdentityFile </path/to/my-aws-account-keypair.pem>
             LocalForward 8081 127.0.0.1:9000
             LocalForward 8084 127.0.0.1:8084
             User ubuntu
 * Execute
 
-          ssh -f -N spinnaker
+          ssh spinnaker
 
 ### Setup a virtual machine to run Spinnaker on Google Cloud Platform
 
@@ -192,7 +186,7 @@ tool.
 
 1. Create a Google Compute Engine virtual machine.
 
-        gcloud compute instances create spinnaker-test --image ubuntu-14-04 --machine-type n1-highmem-8 --scopes compute-rw
+        gcloud compute instances create spinnaker-test --image ubuntu-14-04 --machine-type n1-standard-8 --scopes compute-rw
 
 1. Shell in and open an SSH tunnel from your host to the virtual machine.
 
@@ -211,8 +205,10 @@ command:
 
 The above installs and configures Spinnaker, and starts all Spinnaker
 components, including Redis and Cassandra, which Spinnaker components
-use to store data. Note that it can take several minutes for Spinnaker
-to start.
+use to store data. If you see any errors, please just run the command
+again.
+
+Note that it can take several minutes for Spinnaker to start.
 
 After a few minutes, point your browser at <code>localhost:8081</code>
 if Spinnaker is running in an AWS virtual machine and
@@ -248,12 +244,18 @@ security group.
 * Click **SECURITY GROUPS**, then click **Create Security Group**.
 * Input <code>test</code> for the **Detail (optional)** field and
 <code>Test environment</code> for the **Description** field.
+* Select **defaultvpc** as the **VPC** field.
 * Click **Next**.
-* Click **Add New Source CIDR** and use the default
-  <code>0.0.0.0/0</code> value for the **Source Range** field.
-* Click **Add New Protocol and Port Range**. Use the default <code>TCP</code>
-  value for the **Protocol** field. Change **Start Port** and **End
-  Port** to <code>80</code>.
+* If running on AWS
+  * Click **Add new Security Group Rule**.
+  * Click **default** on the **Security Group** dropdown.
+  * Change **Start Port** and **End Port** to <code>80</code>.
+* If running on GCP
+  * Click **Add New Source CIDR** and use the default
+    <code>0.0.0.0/0</code> value for the **Source Range** field.
+  * Click **Add New Protocol and Port Range**. Use the default
+  <code>TCP</code> value for the **Protocol** field. Change **Start
+  Port** and **End Port** to <code>80</code>.
 * Click the **Create** button.
 
 ### Create a load balancer
