@@ -6,6 +6,3 @@ Spinnaker helps codify the process of reliably deploying artifacts to the cloud,
 <p style="text-align: left">
 <strong>Configure once, run anytime.</strong>
 </p>
-<p>
-<img src="images/aws.png" style="display: block; margin-left: auto; margin-right: auto; border:0px"/>
-</p>
