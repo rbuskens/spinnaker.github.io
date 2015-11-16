@@ -112,7 +112,7 @@ please skip to the next step. Otherwise, please follow the
 instructions below.
 
 Sign into the [Google Developer's
-Console](https://console.devleopers.google.com) and create a
+Console](https://console.developers.google.com) and create a
 project. Call it <code>MySpinnakerProject</code>.
 
 1. Enable APIs in the <code>MySpinnakerProject</code> project.
