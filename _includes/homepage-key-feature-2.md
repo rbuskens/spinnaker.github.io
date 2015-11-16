@@ -1,7 +1,7 @@
 ### Multi-Cloud Aware
 
 <p style="text-align: justify">
-Spinnaker supports your infrastruture, even if happens to be spread across multiple public clouds and accounts.
+Spinnaker supports your infrastruture, even if it happens to be spread across multiple accounts in various public clouds.
 </p>
 <p>
 <strong>Deploy anywhere, manage centrally.</strong>
