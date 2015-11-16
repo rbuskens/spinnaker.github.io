@@ -20,10 +20,10 @@ GCE.
 
 You will go through the following steps:
 
-1. Setup a virtual machine that will be used to run Spinnaker.
 1. Setup a project representing your target deployment
 environment. This project will house the clusters that are deployed
 and managed by Spinnaker.
+1. Setup a virtual machine that will be used to run Spinnaker.
 1. Install, configure and run Spinnaker.
 1. Configure an example Spinnaker pipeline to bake an image and deploy
 the image to a cluster, and let you explore Spinnaker in operation.
@@ -32,69 +32,7 @@ the image to a cluster, and let you explore Spinnaker in operation.
 The first two steps, which have very little to do with Spinnaker
 itself, are by far the most complex steps.
 
-## Step 1: Set up a virtual machine to run Spinnaker
-
-In this step, you'll set up a virtual machine to run Spinnaker on
-either AWS or Google Cloud Platform. While you have the option of
-selecting the machine type, we strongly recommend using a machine with
-8 cores and at least 50GB RAM. If you'd like to run Spinnaker on your
-local machine, feel free to skip this step and move on to [Step
-2](#set-up-your-target-deployment-environment).
-
-### Setup a virtual machine to run Spinnaker on AWS
-
-1. Create an AWS virtual machine.
-* Goto [Console](https://console.aws.amazon.com) > Identity & Access
-  Management > Roles.
-* Click on **Create New Role**.
-* Type "spinnakerRole" in the **Role Name** field. Hit **Next Step**.
-* Click **Select** for the **Amazon EC2** service.
-* Select the radio button next to **PowerUserAccess**, then click
-  **Next Step**, followed by **Create Role**.
-* Goto [Console](https://console.aws.amazon.com) > EC2.
-* Click **Launch Instance**.
-* Click **Select** for the **Ubuntu Server 14.04 LTS (HVM), SSD Volume
-  Type - ami-5189a661** image.
-* Under **Step 2: Choose an Instance Type**, click the radio button
-  for **m4.large**, then click **Next: Configure Instance Details**.
-* Set the **Auto-assign Public IP** field to **Enable**, and the **IAM
-  role** to "spinnakerRole".
-* Click **Review and Launch**.
-* Click **Launch**.
-
-1. Shell in and open an SSH tunnel from your host to the virtual machine.
-* Add this to ~/.ssh/config
-
-          Host spinnaker
-            HostName <IP address of the virtual machine where Spinnaker will run>
-            IdentityFile </path/to/private/AWS/key>
-            LocalForward 8081 127.0.0.1:9000
-            LocalForward 8084 127.0.0.1:8084
-            User ubuntu
-* Execute
-
-          ssh -f -N spinnaker
-
-### Setup a virtual machine to run Spinnaker on Google Cloud Platform
-
-There are multiple ways to setup a virtual machine on Google Cloud
-Platform for running Spinnaker. The instructions here do this by using
-<code>gcloud</code>, Google Cloud Platform's command line interface
-tool.
-
-1. Install <code>gcloud</code>.
-* If you already have <code>gcloud</code> installed, you may skip this
-  step. Otherwise, please follow the [gcloud installation
-  instructions](https://cloud.google.com/sdk).
-1. Create a Google Compute Engine virtual machine.
-
-        gcloud compute instances create spinnaker-test --image ubuntu-14-04 --machine-type n1-highmem-8 --scopes compute-rw
-
-1. Shell in and open an SSH tunnel from your host to the virtual machine.
-
-        gcloud compute ssh spinnaker-test --ssh-flag="-L 8084:localhost:8084" --ssh-flag="-L 9000:localhost:9000" --ssh-flag="-L 8087:localhost:8087"
-
-## Step 2: Set up your target deployment environment
+## Step 1: Set up your target deployment environment
 
 You need to setup your target deployment environment, which is an AWS
 or GCP project that will house clusters that are deployed to and
@@ -193,6 +131,72 @@ project. Call it <code>MySpinnakerProject</code>.
     where it gets downloaded. You'll need this information in [Step
     3](#step-3-update-the-spinnaker-configuration-file).
   * <code>chmod 400</code> this file.
+
+## Step 2: Set up a virtual machine to run Spinnaker
+
+In this step, you'll set up a virtual machine to run Spinnaker on
+either AWS or Google Cloud Platform. While you have the option of
+selecting the machine type, we strongly recommend using a machine with
+8 cores and at least 50GB RAM. If you'd like to run Spinnaker on your
+local machine, feel free to skip this step and move on to [Step
+2](#set-up-your-target-deployment-environment).
+
+### Setup a virtual machine to run Spinnaker on AWS
+
+1. Create an AWS virtual machine.
+* Goto [Console](https://console.aws.amazon.com) > Identity & Access
+  Management > Roles.
+* Click on **Create New Role**.
+* Type "spinnakerRole" in the **Role Name** field. Hit **Next Step**.
+* Click **Select** for the **Amazon EC2** service.
+* Select the radio button next to **PowerUserAccess**, then click
+  **Next Step**, followed by **Create Role**.
+* Goto [Console](https://console.aws.amazon.com) > EC2.
+* Click **Launch Instance**.
+* Click **Select** for the **Ubuntu Server 14.04 LTS (HVM), SSD Volume
+  Type - ami-5189a661** image.
+* Under **Step 2: Choose an Instance Type**, click the radio button
+  for **m4.large**, then click **Next: Configure Instance Details**.
+* Set the **Auto-assign Public IP** field to **Enable**, and the **IAM
+  role** to "spinnakerRole".
+* Click **Review and Launch**.
+* Click **Launch**.
+
+1. Shell in and open an SSH tunnel from your host to the virtual machine.
+* Add this to ~/.ssh/config
+
+          Host spinnaker
+            HostName <IP address of the virtual machine where Spinnaker will run>
+            IdentityFile </path/to/private/AWS/key>
+            LocalForward 8081 127.0.0.1:9000
+            LocalForward 8084 127.0.0.1:8084
+            User ubuntu
+* Execute
+
+          ssh -f -N spinnaker
+
+### Setup a virtual machine to run Spinnaker on Google Cloud Platform
+
+There are multiple ways to setup a virtual machine on Google Cloud
+Platform for running Spinnaker. The instructions here do this by using
+<code>gcloud</code>, Google Cloud Platform's command line interface
+tool.
+
+1. Install <code>gcloud</code>.
+* If you already have <code>gcloud</code> installed, you may skip this
+  step. Otherwise, please follow the [gcloud installation
+  instructions](https://cloud.google.com/sdk).
+1. Run
+
+        gcloud auth login
+
+1. Create a Google Compute Engine virtual machine.
+
+        gcloud compute instances create spinnaker-test --image ubuntu-14-04 --machine-type n1-highmem-8 --scopes compute-rw
+
+1. Shell in and open an SSH tunnel from your host to the virtual machine.
+
+        gcloud compute ssh spinnaker-test --ssh-flag="-L 8084:localhost:8084" --ssh-flag="-L 9000:localhost:9000" --ssh-flag="-L 8087:localhost:8087"
 
 ## Step 3: Install and run Spinnaker
 
