@@ -92,7 +92,7 @@ tool.
 
 1. Shell in and open an SSH tunnel from your host to the virtual machine.
 
-        gcloud compute ssh spkr-test-1 --ssh-flag="-L 8084:localhost:8084" --ssh-flag="-L 9000:localhost:9000" --ssh-flag="-L 8087:localhost:8087"
+        gcloud compute ssh spinnaker-test --ssh-flag="-L 8084:localhost:8084" --ssh-flag="-L 9000:localhost:9000" --ssh-flag="-L 8087:localhost:8087"
 
 ## Step 2: Set up your target deployment environment
 
