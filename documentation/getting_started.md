@@ -8,8 +8,6 @@ lang: en
 * Table of contents. This line is required to start the list.
 {:toc}
 
-### **TODO: Add images to make it easy to follow.**
-
 # Getting started
 
 These instructions quickly get Spinnaker up and running on an Amazon
@@ -323,10 +321,8 @@ for the **Stack** field.
   button.
 * Click the **Micro Utility** button to set the **Instance Profile**,
   then click the **Next** button.
-* If running on AWS
-  * Select **Small** under **Micro Utility: t2**.
-* If running on GCP
-  * Select the **Micro** size.
+* If running on AWS, select **Medium** under **Micro Utility: m3**.
+* If running on GCP, select the **Micro** size.
 * Click the **Next** button.
 * Input <code>2</code> for the **Number of Instances** field, then click the
   **Add** button.
