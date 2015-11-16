@@ -33,7 +33,7 @@ Spinnaker is composed of the following micro services:
 * [Rosco](https://www.github.com/spinnaker/rosco) - bakery responsible for creating images for deployment.
 * [Rush](https://www.github.com/spinnaker/rush) - general purpose scripting engine.
 
-![Image for Spinnaker Architecture](architecture.png)
+![Image for Spinnaker Architecture](architecture-1.png)
 
 # Jenkins Integration
 
