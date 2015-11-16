@@ -2,11 +2,11 @@
 {% capture page_description %}{%if page.description %}{{ page.description }}{% else %}{{ site.meta_defaults.description }}{% endif %}{% endcapture %}
 {% capture site_sharing_image %}http://spinnaker.io{{ site.baseurl }}/images/spinnaker-logo.png{% endcapture %}
 {% capture site_sharing_image_open_graph %}http://spinnaker.io{{ site.baseurl }}/images/spinnaker-logo-og.png{% endcapture %}
-{% capture site_sharing_image_open_graph_secure %}https://spinnaker.io/images/spinnaker-logo-og.png{% endcapture %}
-{% capture site_sharing_image_twitter_card %}https://spinnaker.io/images/spinnaker-logo-twitter-card.png{% endcapture %}
+{% capture site_sharing_image_open_graph_secure %}http://spinnaker.io/images/spinnaker-logo-og.png{% endcapture %}
+{% capture site_sharing_image_twitter_card %}http://spinnaker.io/images/spinnaker-logo-twitter-card.png{% endcapture %}
 {% assign site_social_handle = "@netflixoss" %}
 {% assign company_social_handle = "@netflix" %}
-{% capture page_url %}https://spinnaker.io{{ site.baseurl }}{{ page.url }}{% endcapture %}
+{% capture page_url %}http://spinnaker.io{{ site.baseurl }}{{ page.url }}{% endcapture %}
 
 {% comment %}
 The separate open graph image is necessary because facebook's share widget,
