@@ -145,7 +145,7 @@ local machine, feel free to skip this step and move on to [Step
 * Goto [Console](https://console.aws.amazon.com) > EC2.
 * Click **Launch Instance**.
 * Click **My AMIs** from the left menu
-* Search for the AMD ID that corresponds to the region you are in.
+* Search for the **AMD ID** that corresponds to the region you are in.
 * Click **Select** for the **Spinnaker-Ubuntu-14.04-2 - ami-########** image.
 * Under **Step 2: Choose an Instance Type**, click the radio button
   for **m4.large**, then click **Next: Configure Instance Details**.
