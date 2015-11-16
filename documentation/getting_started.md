@@ -263,9 +263,15 @@ security group.
 Next, you'll create a load balancer in Spinnaker.
 
 * Click **LOAD BALANCERS**, then click **Create Load Balancer**.
-* Input <code>test</code> for the **Stack** field, then click the
-  **Next** button.
-* Unselect the **Enable health check?** checkbox.
+* Input <code>test</code> for the **Stack** field.
+* If running on AWS, select **internal (defaultvpc)** from the **VPC
+  Subnet** dropdown.
+* Click the **Next** button.
+* If running on AWS
+  * Select **example-test** from the **Security Groups** dropdown.
+  * Hit **Next**, then **Create**.
+* If running on GCP
+  * Unselect the **Enable health check?** checkbox.
 * Click the **Create** button.
 
 ### Create a deployment pipeline
@@ -300,11 +306,15 @@ environment.
 
 * Click **Add stage**.
 * Select **Deploy** from the **Type** dropdown.
-* Under the **Clusters** heading, click **Add cluster**.
+* If deploying to AWS
+  * Under **Server Groups**, click **Add Server Group**.
+* If deploying to GCP
+  * Under the **Clusters** heading, click **Add cluster**.
 * Click the **Continue without a template** button.
 
 * Next, In the **Configure Deployment Cluster** window, input "test"
 for the **Stack** field.
+* If running on AWS, select **defaultvpc** under **VPC Subnet**.
 * Click the **Next** button.
 * Click the text area next to the **Load Balancers** heading, then
   select <code>example-test</code>. Click the **Next** button.
@@ -313,7 +323,11 @@ for the **Stack** field.
   button.
 * Click the **Micro Utility** button to set the **Instance Profile**,
   then click the **Next** button.
-* Select the **Micro** size, then click the **Next** button.
+* If running on AWS
+  * Select **Small** under **Micro Utility: t2**.
+* If running on GCP
+  * Select the **Micro** size.
+* Click the **Next** button.
 * Input <code>2</code> for the **Number of Instances** field, then click the
   **Add** button.
 * Save the pipeline configuration by clicking the **Save Changes**
