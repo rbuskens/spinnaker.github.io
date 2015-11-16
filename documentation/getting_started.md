@@ -59,7 +59,8 @@ name is <code>my-aws-account</code>. Wherever you see
 <code>my-aws-account</code> appear below, please replace it with your
 AWS account name.
 
-1. Goto [Console](https://console.aws.amazon.com) > VPC.
+1. Create VPC. 
+* Goto [Console](https://console.aws.amazon.com) > VPC.
 * Click on **Start VPC Wizard**.
 * On the **Step 1: Select a VPC Configuration** screen, make sure that
   **VPC with a Single Public Subnet** is highlighted and click
@@ -79,7 +80,7 @@ AWS account name.
 role.
 
 1. Create an EC2 Key Pair for connecting to your instances.
-* Visit [Console](https://console.aws.amazon.com) > EC2 > Key Pairs.
+* Goto [Console](https://console.aws.amazon.com) > EC2 > Key Pairs.
 * Click **Create Key Pair**.
 * Name the key pair <code>my-aws-account-keypair</code>.
 * AWS will download file <code>my-aws-account-keypair.pem</code> to
@@ -89,7 +90,8 @@ role.
 * Goto [Console](https://console.aws.amazon.com) > AWS Identity & Access Management > Users > Create New Users. Enter a username and hit **Create**.
 * Create an access key for the user. Click **Download Credentials**,
     then Save the access key and secret key into
-    <code>~/.aws/credentials</code> as shown
+    <code>~/.aws/credentials</code> in the spinnaker account of the
+    AWS instance, as shown
     [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files).
 * Click on the username you entered for a more detailed screen.
 * On the **Summary** page, click on the **Permissions** tab.
