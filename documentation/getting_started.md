@@ -144,8 +144,9 @@ local machine, feel free to skip this step and move on to [Step
   **Next Step**, followed by **Create Role**.
 * Goto [Console](https://console.aws.amazon.com) > EC2.
 * Click **Launch Instance**.
-* Click **Select** for the **Ubuntu Server 14.04 LTS (HVM), SSD Volume
-  Type - ami-5189a661** image.
+* Click **My AMIs** from the left menu
+* Search for the AMD ID that corresponds to the region you are in.
+* Click **Select** for the **Spinnaker-Ubuntu-14.04-2 - ami-########** image.
 * Under **Step 2: Choose an Instance Type**, click the radio button
   for **m4.large**, then click **Next: Configure Instance Details**.
 * Set the **Auto-assign Public IP** field to **Enable**, and the **IAM
