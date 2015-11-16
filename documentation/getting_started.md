@@ -135,14 +135,14 @@ local machine, feel free to skip this step and move on to [Step
 ### AWS Setup
 
 1. Create an AWS virtual machine.
-* Goto [Console](https://console.aws.amazon.com) > AWS Identity & Access
+* Go to [AWS Console](https://console.aws.amazon.com) > AWS Identity & Access
   Management > Roles.
 * Click on **Create New Role**.
 * Type "spinnakerRole" in the **Role Name** field. Hit **Next Step**.
 * Click **Select** for the **Amazon EC2** service.
 * Select the radio button next to **PowerUserAccess**, then click
   **Next Step**, followed by **Create Role**.
-* Goto [Console](https://console.aws.amazon.com) > EC2.
+* Go to [AWS Console](https://console.aws.amazon.com) > EC2.
 * Click **Launch Instance**.
 * Click **My AMIs** from the left menu
 * Search for the **AMD ID** that corresponds to the region you are in.
