@@ -110,9 +110,10 @@ you'll need to have a GCP project setup. If you've already got one,
 please skip to the next step. Otherwise, please follow the
 instructions below.
 
-Sign into the [Google Developer's
+Sign into the [Google Developers
 Console](https://console.developers.google.com) and create a
-project. Call it <code>my-spinnaker-project</code>.
+project. Call it a Project Name of <code>my-spinnaker-project</code> and
+take note of the auto-generated Project ID (e.g. *powerful-surf-12345*).
 
 1. Enable APIs in the <code>my-spinnaker-project</code> project.
   * Go to the API Management page.
@@ -182,7 +183,15 @@ tool.
 
         gcloud auth login
 
-1. Create a Google Compute Engine virtual machine.
+1. To simplify your <code>gcloud</code> commands, it can be useful to set
+   optional defaults. For example, if your Project ID is *powerful-surf-12345*,
+   you can set this and your favorite zone with these two commands,
+
+        gcloud config set project powerful-surf-12345
+        gcloud config set compute/zone us-central1-f
+
+1. Create a Google Compute Engine virtual machine. This command assumes you
+   set the <code>gcloud</code> defaults above.
 
         gcloud compute instances create spinnaker-test --image ubuntu-14-04 --machine-type n1-standard-8 --scopes compute-rw
 
@@ -208,10 +217,12 @@ again.
 
 Note that it can take several minutes for Spinnaker to start.
 
-After a few minutes, point your browser at <code>localhost:8081</code>
-if Spinnaker is running in an AWS virtual machine and
-<code>localhost:9000</code> if Spinnaker is running on a Google
-Compute Engine virtual machine.
+It will take several minutes to install and configure Spinnaker along with
+all of its dependencies. Once the install is complete, you will use your
+web browser to interact with Spinnaker.  If you are running Spinnaker on AWS,
+point your browser at [http://localhost:8081](http://localhost:8081). Or, if
+you are running Spinnaker on GCP, point your browser at
+[http://localhost:9000](http://localhost:9000).
 
 ## Step 4. Configure example pipeline
 
