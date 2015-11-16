@@ -8,11 +8,7 @@ lang: en
 * Table of contents. This line is required to start the list.
 {:toc}
 
-### **TODO: Put Google Cloud Launcher instructions here, cuz it'll be so easy.**
-
 ### **TODO: Add images to make it easy to follow.**
-
-### **TODO: Make sure instructions are not AWS-only or GCE-only.**
 
 # Getting started
 
@@ -24,21 +20,81 @@ GCE.
 
 You will go through the following steps:
 
-1. Setup a project representing your target deployment environment on
-either AWS or GCP. This project will house the clusters that are
-deployed and managed by Spinnaker.
-1. Install Spinnaker on an AWS EC2 VM, GCE VM, or local machine.
-1. Edit a Spinnaker configuration file to populate it with the
-information from Step 1.
-1. Start Spinnaker.
+1. Setup a virtual machine that will be used to run Spinnaker.
+1. Setup a project representing your target deployment
+environment. This project will house the clusters that are deployed
+and managed by Spinnaker.
+1. Install, configure and run Spinnaker.
 1. Configure an example Spinnaker pipeline to bake an image and deploy
-the image to a cluster.
+the image to a cluster, and let you explore Spinnaker in operation.
 1. When you're done experimenting, clean everything up and stop Spinnaker.
 
-The first step, which has nothing to do with Spinnaker itself, is by
-far the most complex step.
+The first two steps, which have very little to do with Spinnaker
+itself, are by far the most complex steps.
 
-## Step 1: Set up your target deployment environment
+## Step 1: Set up a virtual machine to run Spinnaker
+
+In this step, you'll set up a virtual machine to run Spinnaker on
+either AWS or Google Cloud Platform. While you have the option of
+selecting the machine type, we strongly recommend using a machine with
+8 cores and at least 50GB RAM. If you'd like to run Spinnaker on your
+local machine, feel free to skip this step and move on to [Step
+2](#set-up-your-target-deployment-environment).
+
+### Setup a virtual machine to run Spinnaker on AWS
+
+1. Create an AWS virtual machine.
+* Goto [Console](https://console.aws.amazon.com) > Identity & Access
+  Management > Roles.
+* Click on **Create New Role**.
+* Type "spinnakerRole" in the **Role Name** field. Hit **Next Step**.
+* Click **Select** for the **Amazon EC2** service.
+* Select the radio button next to **PowerUserAccess**, then click
+  **Next Step**, followed by **Create Role**.
+* Goto [Console](https://console.aws.amazon.com) > EC2.
+* Click **Launch Instance**.
+* Click **Select** for the **Ubuntu Server 14.04 LTS (HVM), SSD Volume
+  Type - ami-5189a661** image.
+* Under **Step 2: Choose an Instance Type**, click the radio button
+  for **m4.large**, then click **Next: Configure Instance Details**.
+* Set the **Auto-assign Public IP** field to **Enable**, and the **IAM
+  role** to "spinnakerRole".
+* Click **Review and Launch**.
+* Click **Launch**.
+
+1. Shell in and open an SSH tunnel from your host to the virtual machine.
+* Add this to ~/.ssh/config
+
+          Host spinnaker
+            HostName <IP address of the virtual machine where Spinnaker will run>
+            IdentityFile </path/to/private/AWS/key>
+            LocalForward 8081 127.0.0.1:9000
+            LocalForward 8084 127.0.0.1:8084
+            User ubuntu
+* Execute
+
+          ssh -f -N spinnaker
+
+### Setup a virtual machine to run Spinnaker on Google Cloud Platform
+
+There are multiple ways to setup a virtual machine on Google Cloud
+Platform for running Spinnaker. The instructions here do this by using
+<code>gcloud</code>, Google Cloud Platform's command line interface
+tool.
+
+1. Install <code>gcloud</code>.
+* If you already have <code>gcloud</code> installed, you may skip this
+  step. Otherwise, please follow the [gcloud installation
+  instructions](https://cloud.google.com/sdk).
+1. Create a Google Compute Engine virtual machine.
+
+        gcloud compute instances create spinnaker-test --image ubuntu-14-04 --machine-type n1-highmem-8 --scopes compute-rw
+
+1. Shell in and open an SSH tunnel from your host to the virtual machine.
+
+        gcloud compute ssh spkr-test-1 --ssh-flag="-L 8084:localhost:8084" --ssh-flag="-L 9000:localhost:9000" --ssh-flag="-L 8087:localhost:8087"
+
+## Step 2: Set up your target deployment environment
 
 You need to setup your target deployment environment, which is an AWS
 or GCP project that will house clusters that are deployed to and
@@ -58,9 +114,9 @@ instructions below.
 Sign into the [AWS console](https://console.aws.amazon.com) and let
 AWS pick a default region where your project resources will be
 allocated. In the rest of this tutorial, we'll assume that the region
-assigned is <code>us-east-1</code>. If the region selected for your
+assigned is <code>us-west-2</code>. If the region selected for your
 project is different from this, please substitue your region
-everywhere <code>us-east-1</code> appears below.
+everywhere <code>us-west-2</code> appears below.
 
 Also, in the instructions below, we'll assume that your AWS account
 name is <code>my-aws-account</code>. Wherever you see
@@ -73,7 +129,7 @@ AWS account name.
   **VPC with a Single Public Subnet** is highlighted and click
   **Select**.
 * Name your VPC. Enter <code>defaultvpc</code> in the **VPC name** field.
-* Enter <code>defaultvpc.internal.us-east-1</code> for **Subnet name**.
+* Enter <code>defaultvpc.internal.us-west-2</code> for **Subnet name**.
 * Click **Create VPC**.
 
 1. Create an EC2 role.
@@ -138,7 +194,7 @@ project. Call it <code>MySpinnakerProject</code>.
     3](#step-3-update-the-spinnaker-configuration-file).
   * <code>chmod 400</code> this file.
 
-## Step 2: Install Spinnaker
+## Step 3: Install and run Spinnaker
 
 If you have chosen to run Spinnaker inside an Amazon Web Services or
 Google Compute Engine VM, please ssh into the VM.
@@ -147,52 +203,19 @@ Irrespective of the machine on which you have chosen to run Spinnaker,
 at the command prompt, type in (or cut-and-paste) the following
 command:
 
-    curl -L https://dl.bintray.com/spinnaker/ospackages/install_spinnaker.sh | bash
+    bash <(curl --silent https://spinnaker.bintray.com/scripts/InstallSpinnaker.sh)
 
-## Step 3: Update the Spinnaker configuration file
+The above installs and configures Spinnaker, and starts all Spinnaker
+components, including Redis and Cassandra, which Spinnaker components
+use to store data. Note that it can take several minutes for Spinnaker
+to start.
 
-Before you can run Spinnaker, you need to update the Spinnaker
-configuration file <code>spinnaker-local.yml</code> with information
-related to your AWS or GCP project and credentials.
+After a few minutes, point your browser at <code>localhost:8081</code>
+if Spinnaker is running in an AWS virtual machine and
+<code>localhost:9000</code> if Spinnaker is running on a Google
+Compute Engine virtual machine.
 
-### Required edits if deploying to AWS
-
-If you're deploying to and managing clusters on AWS, make sure the
-following is set in <code>spinnaker-local.yml</code>:
-
-    providers:
-      ...
-      aws:
-        enabled: true
-        defaultRegion: us-east-1
-
-If you chose a different region than <code>us-east-1</code>, please
-ensure that <code>defaultRegion</code> is set to the region you
-selected.
-
-### Required edits if deploying to Google Cloud Platform
-
-If you're deploying to and managing clusters on Google Cloud Platform,
-make sure the following is set in <code>spinnaker-local.yml</code>:
-
-    providers:
-      ...
-      google:
-        enabled: true
-        project: myspinnakerproject
-        jsonPath: <filename containing the JSON key generated in Step 1>
-
-## Step 4. Start Spinnaker
-
-To start Spinnaker, simply type:
-
-    sudo /opt/spinnaker/start_spinnaker.sh --all
-
-The above command starts all Spinnaker components, including Redis and
-Cassandra, which Spinnaker components use to store data. Note that it
-can take several minutes for Spinnaker to start.
-
-## Step 5. Configure example pipeline
+## Step 4. Configure example pipeline
 
 To walk you through some of the basics with Spinnaker, you're going to
 setup a Spinnaker pipeline that bakes a virtual machine (VM) image
@@ -312,11 +335,11 @@ balancers, and security groups pages, click on the ones created and
 select the appropriate **Delete** command from the Actions pulldown on
 the right.
 
-## Step 6. Stop Spinnaker
+## Step 5. Stop Spinnaker
 
 To stop Spinnaker, type:
 
-    sudo /opt/spinnaker/stop_spinnaker.sh --all
+    sudo stop spinnaker
 
 The above command stops all Spinnaker components, including Redis and
 Cassandra.
