@@ -9,9 +9,6 @@
   title: Guides
   children:
     - getting_started
-    - user_guide   
-    - integration_guide
-    - developer_guide
 -
   title: Community
   children:
