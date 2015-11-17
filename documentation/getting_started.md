@@ -14,14 +14,14 @@ These instructions quickly get Spinnaker up and running on an Amazon
 Web Services (AWS) EC2 or Google Compute Engine virtual machine
 (VM) or local machine, then walk you through the steps of setting up
 and using Spinnaker to deploy to and manage clusters on AWS and/or
-Google Cloud Platform.
+Google Cloud Platform (GCP).
 
 You will go through the following steps:
 
-1. Setup a project representing your target deployment
+1. Set up a project representing your target deployment
 environment. This project will house the clusters that are deployed
 and managed by Spinnaker.
-1. Setup a virtual machine that will be used to run Spinnaker.
+1. Set up a virtual machine that will be used to run Spinnaker.
 1. Install, configure and run Spinnaker.
 1. Configure an example Spinnaker pipeline to bake an image and deploy
 the image to a cluster, and let you explore Spinnaker in operation.
@@ -36,18 +36,17 @@ UI.
 
 ## Step 1: Set up your target deployment environment
 
-You need to setup your target deployment environment, which is an AWS
-or Google Cloud Platform project that will house clusters that are deployed to and
-managed by Spinnaker. You can choose to setup only an [AWS
-environment](#aws-setup), a [Google Cloud Platform
-environment](#google-cloud-platform-setup), or both. Please
+You need to set up your target deployment environment, which is an AWS
+or GCP project that will house clusters that are deployed to and
+managed by Spinnaker. You can choose to set up only an [AWS
+environment](#aws-setup), a [GCP environment](#google-cloud-platform-setup), or both. Please
 follow the appropriate instructions below to get your target
-deployment environment(s) setup.
+deployment environment(s) set up.
 
 ### AWS Setup
 
 If you'd like to have Spinnaker deploy to and manage clusters on AWS,
-you'll need to have an AWS project setup. If you've already got one,
+you'll need to have an AWS project set up. If you've already got one,
 please skip to the next step. Otherwise, please follow the
 instructions below.
 
@@ -111,10 +110,10 @@ role.
 * Click **Add Statement**, then **Next Step**.
 * Click **Apply Policy**.
 
-### Google Cloud Platform Setup
+### GCP Setup
 
-If you'd like to have Spinnaker deploy to and manage clusters on Google Cloud Platform,
-you'll need to have a Google Cloud Platform project setup. If you've already got one,
+If you'd like to have Spinnaker deploy to and manage clusters on GCP,
+you'll need to have a GCP project set up. If you've already got one,
 please skip to the next step. Otherwise, please follow the
 instructions below.
 
@@ -134,7 +133,7 @@ take note of the auto-generated Project ID (e.g. *powerful-surf-12345*).
 ## Step 2: Set up a virtual machine to run Spinnaker
 
 In this step, you'll set up a virtual machine to run Spinnaker on
-either AWS or Google Cloud Platform. While you have the option of
+either AWS or GCP. While you have the option of
 selecting the machine type, we strongly recommend using a machine with
 8 cores and at least 50GB RAM. If you'd like to run Spinnaker on your
 local machine, feel free to skip this step and move on to [Step
@@ -176,11 +175,10 @@ Create an AWS virtual machine.
 
           ssh spinnaker
 
-### Google Cloud Platform Setup
+### GCP Setup
 
-There are multiple ways to setup a virtual machine on Google Cloud
-Platform for running Spinnaker. The instructions here do this by using
-<code>gcloud</code>, Google Cloud Platform's command line interface
+There are multiple ways to set up a virtual machine on GCP for running Spinnaker. The instructions here do this by using
+<code>gcloud</code>, GCP's command line interface
 tool.
 
 1. Install <code>gcloud</code>.
@@ -229,13 +227,13 @@ It will take several minutes to install and configure Spinnaker along with
 all of its dependencies. Once the install is complete, you will use your
 web browser to interact with Spinnaker.  If you are running Spinnaker on AWS,
 point your browser at [http://localhost:8081](http://localhost:8081). Or, if
-you are running Spinnaker on Google Cloud Platform, point your browser at
+you are running Spinnaker on GCP, point your browser at
 [http://localhost:9000](http://localhost:9000).
 
 ## Step 4. Configure example pipeline
 
 To walk you through some of the basics with Spinnaker, you're going to
-setup a Spinnaker pipeline that bakes a virtual machine (VM) image
+set up a Spinnaker pipeline that bakes a virtual machine (VM) image
 containing redis, then deploys that image to a test cluster.
 
 Note here that the us-east-1a availability zone is currently full, so it will need
@@ -249,7 +247,7 @@ steps.
 the **Owner Email** field.
 1. Click inside of the dashed rectangle beside the **Accounts** heading.
   * Click <code>my-aws-account</code> if you are deploying to AWS or
-<code>my-google-account</code> if you are deploying to Google Cloud Platform.
+<code>my-google-account</code> if you are deploying to GCP.
 1. Click on the **Consider only cloud provider health when executing
   tasks** button next to **Instance Health**.
 1. Click the **Create** button.
@@ -269,7 +267,7 @@ security group.
   * Click **Add new Security Group Rule**.
   * Click **default** on the **Security Group** dropdown.
   * Change **Start Port** and **End Port** to <code>80</code>.
-1. If running on Google Cloud Platform
+1. If running on GCP
   * Click **Add New Source CIDR** and use the default
     <code>0.0.0.0/0</code> value for the **Source Range** field.
   * Click **Add New Protocol and Port Range**. Use the default
@@ -289,8 +287,8 @@ Next, you'll create a load balancer in Spinnaker.
 1. If running on AWS
   * Select **example-test** from the **Security Groups** dropdown.
   * Hit **Next**, then **Create**.
-1. If running on Google Cloud Platform
-  * Unselect the **Enable health check?** checkbox.
+1. If running on GCP
+  * Deselect the **Enable health check?** checkbox.
 1. Click the **Create** button.
 
 ### Create a deployment pipeline
@@ -319,7 +317,7 @@ build an image from an existing redis-server package.
 
 #### Set up the second stage of the pipeline
 
-You're now going to setup the second stage of the pipeline. It takes
+You're now going to set up the second stage of the pipeline. It takes
 the image constructed in the *Bake* stage and deploys it into a test
 environment.
 
@@ -342,10 +340,10 @@ for the **Stack** field.
   * Click on the **Micro Utility** button to set the **Instance
     Profile**, then click **Next**.
   * Select the **Medium: m3** size, then click **Next**.
-1. If running on Google Cloud Platform
+1. If running on GCP
   * Click on the **Micro Utility** button to set the **Instance
     Profile**, then click **Next**.
-  * If running on Google Cloud Platform, select the **Micro** size, then click **Next**.
+  * If running on GCP, select the **Micro** size, then click **Next**.
 1. Input <code>2</code> for the **Number of Instances** field, then click the
   **Add** button.
 1. Save the pipeline configuration by clicking the **Save Changes**
