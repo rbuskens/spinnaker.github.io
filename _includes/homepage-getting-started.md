@@ -1,6 +1,6 @@
 ## Resources
 
-<i class="fa fa-github"></i> Spinnaker source is available on [Github](http://www.github.com/spinnaker).
+<i class="fa fa-github"></i> Spinnaker source is available on [GitHub](http://www.github.com/spinnaker).
 
 <i class="fa fa-stack-overflow"></i> For discussion and questions, use [Stack Overflow](http://stackoverflow.com/questions/tagged/spinnaker).
 
