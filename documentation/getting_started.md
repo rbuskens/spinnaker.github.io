@@ -35,8 +35,8 @@ itself, are by far the most complex steps.
 You need to setup your target deployment environment, which is an AWS
 or GCP project that will house clusters that are deployed to and
 managed by Spinnaker. You can choose to setup only an [AWS
-environment](#setup-an-aws-project), a [GCP
-environment](#setup-a-google-cloud-platform-project), or both. Please
+environment](#aws-setup), a [GCP
+environment](#google-cloud-platform-setup), or both. Please
 follow the appropriate instructions below to get your target
 deployment environment(s) setup.
 
