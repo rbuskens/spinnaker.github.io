@@ -206,9 +206,11 @@ tool.
         gcloud compute ssh spinnaker-test --ssh-flag="-L 8084:localhost:8084" --ssh-flag="-L 9000:localhost:9000" --ssh-flag="-L 8087:localhost:8087"
 
 ## Step 3: Install and run Spinnaker
+(Note: If you are running on AWS and provisioned an instance using one of the pre-baked Spinnaker-Ubuntu AMIs,
+you can skip ahead to Step 4.)
 
 If you have chosen to run Spinnaker inside an Amazon Web Services or
-Google Compute Engine VM, please ssh into the VM.
+Google Compute Engine VM, please ssh into the VM. 
 
 Irrespective of the machine on which you have chosen to run Spinnaker,
 at the command prompt, type in (or cut-and-paste) the following
