@@ -9,6 +9,8 @@
   children:
     - getting_started
     - developer_guide
+    - faq
+    - troubleshooting
 -
   title: Community
   children:
