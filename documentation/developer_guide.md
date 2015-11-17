@@ -28,7 +28,7 @@ Spinnaker is composed of the following micro services:
 * [Echo](https://www.github.com/spinnaker/echo) - event service that forwards events from Spinnaker. Echo is responsible for triggering pipeline executions and forwarding pipeline events to listeners.
 * [Front50](https://www.github.com/spinnaker/front50) - data store for pipelines, notifications and applications.
 * [Gate](https://www.github.com/spinnaker/gate) - service gateway responsible for providing an API to end users and UI. 
-* [Igor](https://www.github.com/spinnaker/igor) - interface to Jenkins, Stash and Github.
+* [Igor](https://www.github.com/spinnaker/igor) - interface to Jenkins, Stash and GitHub.
 * [Orca](https://www.github.com/spinnaker/orca) - orchestration engine responsible for running Spinnaker pipelines and tasks.
 * [Rosco](https://www.github.com/spinnaker/rosco) - bakery responsible for creating images for deployment.
 * [Rush](https://www.github.com/spinnaker/rush) - general purpose scripting engine.
