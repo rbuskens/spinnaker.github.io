@@ -10,4 +10,4 @@ lang: en
 
 # Google Cloud Launcher
 
-Get started with Spinnaker on Google Cloud Platform quickly and easily through [Google Cloud Launcher](https://cloud.google.com/launcher/solution/click-to-deploy-images/spinnaker?q=spinnaker)
+Get started with Spinnaker on Google Cloud Platform quickly and easily through [**Google Cloud Launcher**](https://cloud.google.com/launcher/solution/click-to-deploy-images/spinnaker?q=spinnaker).
