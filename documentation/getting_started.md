@@ -332,9 +332,9 @@ for the **Stack** field.
   <code>example-test (example-test)</code>. Click the **Next**
   button.
 1. If running on AWS
-  * Click on the **High Memory** button to set the **Instance
+  * Click on the **Micro Utility** button to set the **Instance
     Profile**, then click **Next**.
-  * Select the **2xlarge** size, then click **Next**.
+  * Select the **Medium: m3** size, then click **Next**.
 1. If running on GCP
   * Click on the **Micro Utility** button to set the **Instance
     Profile**, then click **Next**.
