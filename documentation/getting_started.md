@@ -30,6 +30,10 @@ the image to a cluster, and let you explore Spinnaker in operation.
 The first two steps, which have very little to do with Spinnaker
 itself, are by far the most complex steps.
 
+Keep in mind that naming of your entities in AWS is important as these names are parsed
+and Spinnaker will use them to populate available resource lists in the Spinnaker
+UI.
+
 ## Step 1: Set up your target deployment environment
 
 You need to setup your target deployment environment, which is an AWS
@@ -59,7 +63,7 @@ name is <code>my-aws-account</code>. Wherever you see
 <code>my-aws-account</code> appear below, please replace it with your
 AWS account name.
 
-1. Create VPC. 
+1. Create VPC.
 * Goto [Console](https://console.aws.amazon.com) > VPC.
 * Click on **Start VPC Wizard**.
 * On the **Step 1: Select a VPC Configuration** screen, make sure that
@@ -233,6 +237,10 @@ you are running Spinnaker on GCP, point your browser at
 To walk you through some of the basics with Spinnaker, you're going to
 setup a Spinnaker pipeline that bakes a virtual machine (VM) image
 containing redis, then deploys that image to a test cluster.
+
+Note here that the us-east-1a availability zone is currently full, so it will need
+to be deselected in the corresponding 'region' checkbox list for each of these
+steps.
 
 ### Create a Spinnaker application
 
