@@ -20,4 +20,4 @@
   title: Quick Reference
   children:
     - ami_table
-
+    - google_cloud_launcher
