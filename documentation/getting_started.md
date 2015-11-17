@@ -256,8 +256,7 @@ security group.
 1. Click **SECURITY GROUPS**, then click the **+** button to create a security group.
 1. Input <code>test</code> for the **Detail (optional)** field and
 <code>Test environment</code> for the **Description** field.
-1. Select **defaultvpc** as the **VPC** field.
-1. Click **Next**.
+1. If running on AWS, select **defaultvpc** as the **VPC** field and click **Next**.
 1. If running on AWS
   * Click **Add new Security Group Rule**.
   * Click **default** on the **Security Group** dropdown.
