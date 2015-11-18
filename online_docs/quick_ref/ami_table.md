@@ -13,12 +13,12 @@ lang: en
 
 | Region         | Name                     | Ubuntu Version | Instance Type | AMI ID       |
 |----------------|--------------------------|----------------|---------------|--------------|
-| us-east-1      | Spinnaker-Ubuntu-14.04-2 | 14.04 LTS      | HVM           | ami-e5b9c38f |
-| us-west-1      | Spinnaker-Ubuntu-14.04-2 | 14.04 LTS      | HVM           | ami-76583616 |
-| us-west-2      | Spinnaker-Ubuntu-14.04-2 | 14.04 LTS      | HVM           | ami-04e1f065 |
-| eu-west-1      | Spinnaker-Ubuntu-14.04-2 | 14.04 LTS      | HVM           | ami-5f954f2c |
-| eu-central-1   | Spinnaker-Ubuntu-14.04-2 | 14.04 LTS      | HVM           | ami-a36476cf |
-| ap-southeast-1 | Spinnaker-Ubuntu-14.04-2 | 14.04 LTS      | HVM           | ami-ab589ec8 |
-| ap-southeast-2 | Spinnaker-Ubuntu-14.04-2 | 14.04 LTS      | HVM           | ami-f6045d95 |
-| ap-northeast-1 | Spinnaker-Ubuntu-14.04-2 | 14.04 LTS      | HVM           | ami-a2b797cc |
-| sa-east-1      | Spinnaker-Ubuntu-14.04-2 | 14.04 LTS      | HVM           | ami-8173c9ed |
+| us-east-1      | Spinnaker-Ubuntu-14.04-9 | 14.04 LTS      | HVM           | ami-837a3fe9 |
+| us-west-1      | Spinnaker-Ubuntu-14.04-9 | 14.04 LTS      | HVM           | ami-d811cbab |
+| us-west-2      | Spinnaker-Ubuntu-14.04-9 | 14.04 LTS      | HVM           | ami-094a5a68 |
+| eu-west-1      | Spinnaker-Ubuntu-14.04-9 | 14.04 LTS      | HVM           | ami-839cf2e3 |
+| eu-central-1   | Spinnaker-Ubuntu-14.04-9 | 14.04 LTS      | HVM           | ami-643e2c08 |
+| ap-southeast-1 | Spinnaker-Ubuntu-14.04-9 | 14.04 LTS      | HVM           | ami-858d4ce |
+| ap-southeast-2 | Spinnaker-Ubuntu-14.04-9 | 14.04 LTS      | HVM           | ami-5b5f0638 |
+| ap-northeast-1 | Spinnaker-Ubuntu-14.04-9 | 14.04 LTS      | HVM           | ami-fb012295 |
+| sa-east-1      | Spinnaker-Ubuntu-14.04-9 | 14.04 LTS      | HVM           | ami-b243f9de |

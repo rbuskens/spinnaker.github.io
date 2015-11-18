@@ -147,7 +147,7 @@ Create an AWS virtual machine.
   **Next Step**, followed by **Create Role**.
 * Goto [AWS Console](https://console.aws.amazon.com) > EC2.
 * Click **Launch Instance**.
-* Click **Select** for the **Spinnaker-Ubuntu-14.04-2 - ami-04e1f065** image.
+* Click **Select** for the **Spinnaker-Ubuntu-14.04-9 - ami-094a5a68** image.
 * Under **Step 2: Choose an Instance Type**, click the radio button
   for **m4.large**, then click **Next: Configure Instance Details**.
 * Set the **Auto-assign Public IP** field to **Enable**, and the **IAM
