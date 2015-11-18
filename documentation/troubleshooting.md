@@ -60,7 +60,7 @@ For example:
 
 Spinnaker provides a swagger endpoint available through Gate (8084). All of the Spinnaker UI goes through this API. The endpoint is useful if you wish to try passing different variables to your requests to test out variables and isolate problems.
 
-To access the API, go to http://[gate url]/swagger/index.html ( for example [http://localhost:8084](http://localhost:8084) )
+To access the API, go to http://[gate url]/swagger/index.html ( for example [http://localhost:8084/swagger/index.html](http://localhost:8084/swagger/index.html) )
 
 ![API](../images/troubleshooting/api.png)
 
