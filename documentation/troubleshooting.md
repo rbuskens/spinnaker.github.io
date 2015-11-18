@@ -70,7 +70,7 @@ Most Spinnaker services have a health check endpoint configured. Sometimes this 
 
 Sometimes issues arise from incorrectly set environment variables or configuration files. You can see configurations available by click on http://[service url]/env (e.g, [http://localhost:8084/env](http://localhost:8084/env)), which will provide a dump of the service environment. 
 
-There are a few other endpoints available actuator endpoints can be seen in the [Spring Boot Actuator Endpoints documentation.](http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#production-ready).
+There are a few other endpoints available. A list is available on the [Spring Boot Actuator Endpoints documentation.](http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#production-ready).
 
 ## I can't create an Application.
 This can manifest as either an endless spinner or as an error message rendered at the bottom of the Create Application dialog.
