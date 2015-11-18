@@ -210,7 +210,7 @@ tool.
 you can skip ahead to Step 4.)
 
 If you have chosen to run Spinnaker inside an Amazon Web Services or
-Google Compute Engine VM, please ssh into the VM. 
+Google Compute Engine VM, please ssh into the VM.
 
 Irrespective of the machine on which you have chosen to run Spinnaker,
 at the command prompt, type in (or cut-and-paste) the following
