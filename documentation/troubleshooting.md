@@ -10,5 +10,5 @@ lang: en
 
 # Having problems? Check out our troubleshooting guide below!
 
-To be populated with initial content by November 17, 2015.
+To be populated with initial content by November 20, 2015.
 
