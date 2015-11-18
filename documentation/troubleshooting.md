@@ -25,7 +25,7 @@ Start with the Console tab to see if there are any JavaScript errors that are ca
 Network tab and see if there are any connectivity issues or any services returning a non-200 http response. 
 ![screen with error](../images/troubleshooting/connectionIssue.png).
 
-The following table shows a list of services and the port they are traditionally bound to in the Spinnaker configuration files. 
+The following table shows a list of services and the ports they are traditionally bound to in the Spinnaker configuration files. 
 
 | Service | Port |   
 |---------|------|
