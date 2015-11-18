@@ -14,7 +14,11 @@ These instructions quickly get Spinnaker up and running, then walk you through
 the steps of setting up and using Spinnaker to deploy to and manage clusters 
 on AWS and/or Google Cloud Platform (GCP).
 
-You will go through the following steps:
+If you're interested in a set up for developers, please refer to the [README](https://github.com/spinnaker/spinnaker/blob/master/README.adoc) for
+developer setup. If you're really interested, you can try out getting set up via
+[docker compose](https://github.com/spinnaker/spinnaker/tree/master/experimental/docker-compose).
+
+For the quick start, you will go through the following steps:
 
 1. Set up a project representing your target deployment
 environment. This project will house the clusters that are deployed
