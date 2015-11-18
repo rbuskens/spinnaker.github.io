@@ -178,7 +178,7 @@ The quickest way to get a GCE instance running Spinnaker is to use Google's Clou
 
 1. Select the project you selected in the GCP Setup step above and click the Continue button
 
-1. Keep defaults and click the Deploy Spinnaker near the bottom
+1. Keep defaults and click the Deploy Spinnaker button near the bottom
 
 1. Install <code>gcloud</code>.
   * If you already have <code>gcloud</code> installed, you may skip this
