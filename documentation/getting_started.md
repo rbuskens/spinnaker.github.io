@@ -22,13 +22,9 @@ You will go through the following steps:
 environment. This project will house the clusters that are deployed
 and managed by Spinnaker.
 1. Set up a virtual machine that will be used to run Spinnaker.
-1. Install, configure and run Spinnaker.
 1. Configure an example Spinnaker pipeline to bake an image and deploy
 the image to a cluster, and let you explore Spinnaker in operation.
 1. When you're done experimenting, clean everything up and stop Spinnaker.
-
-The first two steps, which have very little to do with Spinnaker
-itself, are by far the most complex steps.
 
 Keep in mind that naming of your entities in AWS is important as these names are parsed
 and Spinnaker will use them to populate available resource lists in the Spinnaker
@@ -38,7 +34,7 @@ UI.
 
 You need to set up your target deployment environment, which is an AWS
 or GCP project that will house clusters that are deployed to and
-managed by Spinnaker. You can choose to set up only an [AWS
+managed by Spinnaker. You can choose to deploy to only an [AWS
 environment](#aws-setup), a [GCP environment](#google-cloud-platform-setup), or both. Please
 follow the appropriate instructions below to get your target
 deployment environment(s) set up.
@@ -130,7 +126,7 @@ take note of the auto-generated Project ID (e.g. *powerful-surf-12345*).
     Autoscaler](https://console.developers.google.com/apis/api/autoscaler/overview?project=_)
     APIs.
 
-## Step 2: Set up a virtual machine to run Spinnaker
+## Step 2: Set up a Spinnaker instance
 
 In this step, you'll set up a virtual machine to run Spinnaker on
 either AWS or GCP. While you have the option of
@@ -177,43 +173,34 @@ Create an AWS virtual machine.
 
 ### GCP Setup
 
-There are multiple ways to set up a virtual machine on GCP for running Spinnaker. The instructions here do this by using
-<code>gcloud</code>, GCP's command line interface
-tool.
+The quickest way to get a GCE instance running Spinnaker is to use Google's Cloud Launcher.
+
+1. Navigate to [Spinnaker on Cloud Launcher](https://cloud.google.com/launcher/solution/click-to-deploy-images/spinnaker)
+* The displayed Estimated cost is for running the GCE VM for one month. 
+GCE VMs are charged at minute increments with a 10-minute minimum.
+
+1. Click the Launch on Google Cloud Platform button
+
+1. Select the project you selected in the GCP Setup step above and click the Continue button
+
+1. Keep defaults and click the Deploy Spinnaker near the bottom
 
 1. Install <code>gcloud</code>.
 * If you already have <code>gcloud</code> installed, you may skip this
   step. Otherwise, please follow the [gcloud installation
   instructions](https://cloud.google.com/sdk).
-1. Run
 
-        gcloud auth login
+1. When the deployment completes, open an SSH tunnel from your host to the GCE instance.
+You can find the specific command in the "Suggest next steps" screen that appears.
+* Spinnaker may take a few minutes to configure itself. We suggest giving your instance 3-5 minutes 
+for post-configurations to complete.
 
-1. To simplify your <code>gcloud</code> commands, it can be useful to set
-   optional defaults. For example, if your Project ID is *powerful-surf-12345*,
-   you can set this and your favorite zone with these two commands,
+### Running Spinnaker on a host not on AWS or GCP
 
-        gcloud config set project powerful-surf-12345
-        gcloud config set compute/zone us-central1-f
+If you have chosen to run your Spinnaker instance somwhere other than on AWS or GCP (e.g. your local workstation),
+follow these steps:
 
-1. Create a Google Compute Engine virtual machine. This command assumes you
-   set the <code>gcloud</code> defaults above.
-
-        gcloud compute instances create spinnaker-test --image ubuntu-14-04 --machine-type n1-standard-8 --scopes compute-rw
-
-1. Shell in and open an SSH tunnel from your host to the virtual machine.
-
-        gcloud compute ssh spinnaker-test --ssh-flag="-L 8084:localhost:8084" --ssh-flag="-L 9000:localhost:9000" --ssh-flag="-L 8087:localhost:8087"
-
-## Step 3: Install and run Spinnaker
-(Note: If you are running on AWS and provisioned an instance using one of the pre-baked Spinnaker-Ubuntu AMIs,
-you can skip ahead to Step 4.)
-
-If you have chosen to run Spinnaker inside an Amazon Web Services or
-Google Compute Engine VM, please ssh into the VM.
-
-Irrespective of the machine on which you have chosen to run Spinnaker,
-at the command prompt, type in (or cut-and-paste) the following
+At the command prompt, type in (or cut-and-paste) the following
 command:
 
     bash <(curl --silent https://spinnaker.bintray.com/scripts/InstallSpinnaker.sh)
