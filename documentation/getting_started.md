@@ -166,8 +166,9 @@ Create an AWS virtual machine.
           Host spinnaker
             HostName <Public IP address of instance you just created>
             IdentityFile </path/to/my-aws-account-keypair.pem>
-            LocalForward 8081 127.0.0.1:9000
+            LocalForward 9000 127.0.0.1:9000
             LocalForward 8084 127.0.0.1:8084
+            LocalForward 8087 127.0.0.1:8087
             User ubuntu
 * Execute
 
