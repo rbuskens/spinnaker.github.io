@@ -46,7 +46,7 @@ If you have identified a service, you can check the service logs.
 
 If you used one of the pre-baked Spinnaker machine images or installed Spinnaker from the .deb files, each subsystem will write its logs to:
 
-`/var/log/spinnaker/{subsystem-name}/{subsystem-name}.log`
+`/var/log/spinnaker/{service}/{service}.log`
 
 For example:
 
@@ -60,15 +60,15 @@ For example:
 
 Spinnaker provides a swagger endpoint available through Gate (8084). All of the Spinnaker UI goes through this API. The endpoint is useful if you wish to try passing different variables to your requests to test out variables and isolate problems.
 
-To access the API, go to http://[gate url]/swagger/index.html ( for example [http://localhost:8084/swagger/index.html](http://localhost:8084/swagger/index.html) )
+To access the API, go to http://{gate service url}/swagger/index.html ( for example [http://localhost:8084/swagger/index.html](http://localhost:8084/swagger/index.html) )
 
 ![API](../images/troubleshooting/api.png)
 
 ###Check Health / Config endpoints###
 
-Most Spinnaker services have a health check endpoint configured. Sometimes this can provide useful information in terms of visualizing service health. To see if there is any information available, click on http://[service url]/health (e.g, [http://localhost:8084/health](http://localhost:8084/health)).
+Most Spinnaker services have a health check endpoint configured. Sometimes this can provide useful information in terms of visualizing service health. To see if there is any information available, click on http://{service url}/health (e.g, [http://localhost:8084/health](http://localhost:8084/health)).
 
-Sometimes issues arise from incorrectly set environment variables or configuration files. You can see configurations available by click on http://[service url]/env (e.g, [http://localhost:8084/env](http://localhost:8084/env)), which will provide a dump of the service environment. 
+Sometimes issues arise from incorrectly set environment variables or configuration files. You can see configurations available by clicking on http://{service url}/env (e.g, [http://localhost:8084/env](http://localhost:8084/env)), which will provide a dump of the service environment. 
 
 There are a few other endpoints available. A list is available on the [Spring Boot Actuator Endpoints documentation.](http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#production-ready).
 
