@@ -28,3 +28,21 @@ Thrift should now be enabled. Execute `curl localhost:9160` and verify that you 
 The last step is to restart the two Spinnaker services that require Cassandra to be available on startup: `sudo service front50 restart` and `sudo service echo restart`.
 
 We will be making front50 and [echo](https://github.com/spinnaker/echo) more tolerant of an unavailable or misconfigured Cassandra cluster on startup shortly.
+
+## I changed my configuration. How do I get Spinnaker to pick up the modified configuration?
+There are various ways you can modify your configuration:
+* Re-running `InstallSpinnaker.sh`
+* Editing `/etc/default/spinnaker`
+* Editing one of the `.yml` files (e.g. `/opt/spinnaker/config/spinnaker-local.yml`, `/opt/spinnaker/config/clouddriver.yml`, `/opt/rosco/config/rosco.yml`)
+* Modifying environment variables
+* Modifying `~/.aws/credentials`
+
+If you've modified your configuration via any of those methods, the simplest way to have Spinnaker synchronize your configuration is to run these two commands:
+
+\# Restart all Spinnaker subsystems
+
+`sudo restart spinnaker`
+
+\# Update Deck (the browser application) settings
+
+`sudo /opt/spinnaker/bin/reconfigure_spinnaker.sh`
