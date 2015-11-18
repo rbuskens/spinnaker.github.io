@@ -200,7 +200,7 @@ If you just want to try running on your local workstation, type in the following
 
     bash <(curl --silent https://spinnaker.bintray.com/scripts/InstallSpinnaker.sh)
 
-The above [https://github.com/spinnaker/spinnaker/blob/master/InstallSpinnaker.sh](script) 
+The above [script](https://github.com/spinnaker/spinnaker/blob/master/InstallSpinnaker.sh) 
 installs and configures Spinnaker, and starts all Spinnaker
 components, including Redis and Cassandra, which Spinnaker components
 use to store data. If you see any errors, please just run the command
