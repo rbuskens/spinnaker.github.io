@@ -92,14 +92,14 @@ role.
 * Goto [Console](https://console.aws.amazon.com) > AWS Identity & Access Management > Users > Create New Users. Enter a username and hit **Create**.
 * Create an access key for the user. Click **Download Credentials**,
     then Save the access key and secret key into
-    <code>~/.aws/credentials</code> in the spinnaker account of the
-    AWS instance, as shown
+    <code>~/.aws/credentials</code> on your machine as shown
     [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files).
+* Click **Close**.
 * Click on the username you entered for a more detailed screen.
 * On the **Summary** page, click on the **Permissions** tab.
 * Click **Attach Policy**.
-* Click the radio button next to **PowerUserAccess**, then
-  click **Next Step**.
+* Click the checkbox next to **PowerUserAccess**, then
+  click **Attach Policy**.
 * Click on the **Inline Policies** header, then click the link to
   create an inline policy.
 * Click **Select** for **Policy Generator**.
@@ -143,10 +143,11 @@ Create an AWS virtual machine.
 * Click on **Create New Role**.
 * Type "spinnakerRole" in the **Role Name** field. Hit **Next Step**.
 * Click **Select** for the **Amazon EC2** service.
-* Select the radio button next to **PowerUserAccess**, then click
+* Select the checkbox next to **PowerUserAccess**, then click
   **Next Step**, followed by **Create Role**.
 * Goto [AWS Console](https://console.aws.amazon.com) > EC2.
 * Click **Launch Instance**.
+* Click **Community AMIs** then
 * If the default region where your resources were allocated in [Step 1](#step-1-set-up-your-target-deployment-environment) is <code>us-west-2</code>, click **Select** for the **Spinnaker-Ubuntu-14.04-9 - ami-094a5a68** image. Otherwise, consult {% include link.to id="ami_table" text="this region-to-AMI mapping table" %} to identify an appropriate image to use.
 * Under **Step 2: Choose an Instance Type**, click the radio button
   for **m4.large**, then click **Next: Configure Instance Details**.
@@ -154,6 +155,7 @@ Create an AWS virtual machine.
   role** to "spinnakerRole".
 * Click **Review and Launch**.
 * Click **Launch**.
+* Select the `my-aws-account-keypair` you created earlier.
 * Click **View Instances**. Make note of the **Public IP** field for
   the newly-created instance. This will be needed in the next step.
 * Note that it will take several minutes for Spinnaker post-configurations to complete.
