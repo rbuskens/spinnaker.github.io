@@ -37,10 +37,11 @@ one](http://stackoverflow.com/questions/ask?tags=spinnaker)!
 
 <script async defer src="http://join.spinnaker.io/slackin.js"></script>
 
-The Spinnaker team hangs out on Slack in both the <code>#users</code>
-channel for user-related discussions and the <code>#dev</code> channel for
-developer-related discussions. You can participate in the Spinnaker
-discussions [here](https://spinnakerteam.slack.com). Slack
-requires registration, but the Spinnaker team is open invitation to
-anyone to register [here](http://join.spinnaker.io). Feel free to come and
-ask any and all questions.
+The Spinnaker team hangs out on Slack in both the
+<code>#general</code> channel for general user-related discussions and
+the <code>#dev</code> channel for developer-related discussions. You
+can participate in the Spinnaker discussions
+[here](https://spinnakerteam.slack.com). Slack requires registration,
+but the Spinnaker team is open invitation to anyone to register
+[here](http://join.spinnaker.io). Feel free to come and ask any and
+all questions.
