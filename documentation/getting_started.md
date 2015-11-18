@@ -109,7 +109,7 @@ role.
 * Click **Add Statement**, then **Next Step**.
 * Click **Apply Policy**.
 
-### GCP Setup
+### Google Cloud Platform Setup
 
 If you'd like to have Spinnaker deploy to and manage clusters on GCP,
 you'll need to have a GCP project set up. If you've already got one,
@@ -147,7 +147,12 @@ Create an AWS virtual machine.
   **Next Step**, followed by **Create Role**.
 * Goto [AWS Console](https://console.aws.amazon.com) > EC2.
 * Click **Launch Instance**.
-* Click **Select** for the **Spinnaker-Ubuntu-14.04-9 - ami-094a5a68** image.
+* If the default region where your resources were allocated in [Step
+  1](#step-1-set-up-your-target-deployment-environment) is
+  <code>us-west-2</code>, click **Select** for the
+  **Spinnaker-Ubuntu-14.04-9 - ami-094a5a68** image. Otherwise,
+  consult {% include link.to id="ami_table" text="this region-to-AMI
+  mapping table" %} to identify an appropriate image to use.
 * Under **Step 2: Choose an Instance Type**, click the radio button
   for **m4.large**, then click **Next: Configure Instance Details**.
 * Set the **Auto-assign Public IP** field to **Enable**, and the **IAM
@@ -171,27 +176,26 @@ Create an AWS virtual machine.
 
           ssh spinnaker
 
-### GCP Setup
+### Google Cloud Platform Setup
 
 The quickest way to get a GCE instance running Spinnaker is to use Google's Cloud Launcher.
 
-1. Navigate to [Spinnaker on Cloud Launcher](https://cloud.google.com/launcher/solution/click-to-deploy-images/spinnaker)
-  * The displayed Estimated cost is for running the GCE VM for one month. 
-    GCE VMs are charged at minute increments with a 10-minute minimum.
-
-1. Click the Launch on Google Cloud Platform button
-
-1. Select the project you selected in the GCP Setup step above and click the Continue button
-
-1. Keep defaults and click the Deploy Spinnaker button near the bottom
-
+1. Navigate to [Spinnaker on Cloud
+Launcher](https://cloud.google.com/launcher/solution/click-to-deploy-images/spinnaker).
+* The displayed *Estimated cost* is for running the GCE VM for one
+  month. GCE VMs are charged at minute increments with a 10-minute
+  minimum.
+1. Click the **Launch on Google Cloud Platform** button.
+1. Select the project you selected in [Step
+1](#step-1-set-up-your-target-deployment-environment) above and click
+the **Continue** button.
+1. Keep defaults and click the **Deploy Spinnaker** button near the bottom.
 1. Install <code>gcloud</code>.
   * If you already have <code>gcloud</code> installed, you may skip this
     step. Otherwise, please follow the [gcloud installation
     instructions](https://cloud.google.com/sdk).
-
 1. When the deployment completes, open an SSH tunnel from your host to the GCE instance.
-You can find the specific command in the "Suggest next steps" screen that appears.
+You can find the specific command in the **Suggest next steps** screen that appears.
   * Spinnaker may take a few minutes to configure itself. We suggest giving your instance 3-5 minutes 
     for post-configurations to complete.
 
@@ -214,7 +218,7 @@ point your browser at [http://localhost:8081](http://localhost:8081). Or, if
 you are running Spinnaker on GCP, point your browser at
 [http://localhost:9000](http://localhost:9000).
 
-## Step 4. Configure example pipeline
+## Step 3. Configure example pipeline
 
 To walk you through some of the basics with Spinnaker, you're going to
 set up a Spinnaker pipeline that bakes a virtual machine (VM) image
@@ -355,7 +359,7 @@ balancers, and security groups pages, click on the ones created and
 select the appropriate **Delete** command from the Actions pulldown on
 the right.
 
-## Step 5. Stop Spinnaker
+## Step 4. Stop Spinnaker
 
 To stop Spinnaker, type:
 
