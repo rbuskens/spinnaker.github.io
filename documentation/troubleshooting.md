@@ -10,5 +10,19 @@ lang: en
 
 # Having problems? Check out our troubleshooting guide below!
 
-To be populated with initial content by November 20, 2015.
+#### I can't create an Application.
+The Spinnaker service responsible for creating applications is [front50](https://github.com/spinnaker/front50). It "creates" an application by adding a row to Cassandra. The first place to look is in `/var/log/spinnaker/front50/front50.log`. If you see a bunch of stack traces with references to `astyanax`, we're on the right track. The problem is that when Cassandra is upgraded, it can sometimes disable the thrift server. So we're going to first see if Cassandra is available at all, and then we'll check if thrift is enabled.
 
+1. Check if Cassandra is available via `cqlsh`. If you can connect to the cluster, Cassandra is installed and available.
+
+1. Check if Cassandra has thrift enabled via `curl localhost:9160`. If you get a connection refused, thrift is not enabled (as opposed to an 'empty reply').
+
+1. Enable thrift via this command: `nodetool enablethrift`.
+
+1. Make this setting durable by editing `/etc/cassandra/cassandra.yaml`. Find the `start_rpc` flag and set it to `true`.
+
+Thrift should now be enabled. Execute `curl localhost:9160` and verify that you receive an 'empty reply'.
+
+The last step is to restart the two Spinnaker services that require Cassandra to be available on startup: `sudo service front50 restart` and `sudo service echo restart`.
+
+We will be making front50 and [echo](https://github.com/spinnaker/echo) more tolerant of an unavailable or misconfigured Cassandra cluster on startup shortly.
