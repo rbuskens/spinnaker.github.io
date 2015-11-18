@@ -8,9 +8,11 @@ lang: en
 * Table of contents. This line is required to start the list.
 {:toc}
 
-# Having problems? Check out our troubleshooting guide below!
+# Troubleshooting Guide
 
-#### I can't create an Application.
+## I can't create an Application.
+This can manifest as either an endless spinner or with an error message rendered at the bottom of the Create Application dialog.
+
 The Spinnaker service responsible for creating applications is [front50](https://github.com/spinnaker/front50). It "creates" an application by adding a row to Cassandra. The first place to look is in `/var/log/spinnaker/front50/front50.log`. If you see a bunch of stack traces with references to `astyanax`, we're on the right track. The problem is that when Cassandra is upgraded, it can sometimes disable the thrift server. So we're going to first see if Cassandra is available at all, and then we'll check if thrift is enabled.
 
 1. Check if Cassandra is available via `cqlsh`. If you can connect to the cluster, Cassandra is installed and available.
