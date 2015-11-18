@@ -10,8 +10,8 @@ lang: en
 
 # Getting started
 
-These instructions quickly get Spinnaker up and running, then walk you through 
-the steps of setting up and using Spinnaker to deploy to and manage clusters 
+These instructions quickly get Spinnaker up and running, then walk you through
+the steps of setting up and using Spinnaker to deploy to and manage clusters
 on AWS and/or Google Cloud Platform (GCP).
 
 If you're interested in a set up for developers, please refer to the [README](https://github.com/spinnaker/spinnaker/blob/master/README.adoc) for
@@ -23,7 +23,7 @@ For the quick start, you will go through the following steps:
 1. Set up a project representing your target deployment
 environment. This project will house the clusters that are deployed
 and managed by Spinnaker.
-1. Set up an Amazon Web Services (AWS) EC2, Google Compute Engine instance 
+1. Set up an Amazon Web Services (AWS) EC2, Google Compute Engine instance
 or local machine that will be used to run Spinnaker.
 1. Configure an example Spinnaker pipeline to bake an image and deploy
 the image to a cluster, and let you explore Spinnaker in operation.
@@ -132,7 +132,7 @@ take note of the auto-generated Project ID (e.g. *powerful-surf-12345*).
 ## Step 2: Set up a Spinnaker instance
 
 In this step, you'll set up an instance of Spinnaker on AWS, GCP or on a local host.
-We strongly recommend using a machine with 8 cores and at least 50GB RAM. 
+We strongly recommend using a machine with 8 cores and at least 50GB RAM.
 
 ### AWS Setup
 
@@ -145,12 +145,21 @@ Create an AWS virtual machine.
 * Click **Select** for the **Amazon EC2** service.
 * Select the checkbox next to **PowerUserAccess**, then click
   **Next Step**, followed by **Create Role**.
+* Click on the role you created.
+* Click on the **Inline Policies** header, then click the link to
+  create an inline policy.
+* Click **Select** for **Policy Generator**.
+* Select **AWS Identity and Access Management** from the **AWS Service** pulldown.
+* Select **PassRole** for **Actions**.
+* Type <code>*</code> (the asterisk character) in the **Amazon Resource Name (ARN)** box.
+* Click **Add Statement**, then **Next Step**.
+* Click **Apply Policy**.
 * Goto [AWS Console](https://console.aws.amazon.com) > EC2.
 * Click **Launch Instance**.
 * Click **Community AMIs** then
 * If the default region where your resources were allocated in [Step 1](#step-1-set-up-your-target-deployment-environment) is <code>us-west-2</code>, click **Select** for the **Spinnaker-Ubuntu-14.04-10 - [ami-02766663](https://console.aws.amazon.com/ec2/home?region=us-west-2#launchAmi=ami-02766663)** image. Otherwise, consult {% include link.to id="ami_table" text="this region-to-AMI mapping table" %} to identify an appropriate image to use.
 * Under **Step 2: Choose an Instance Type**, click the radio button
-  for **m4.large**, then click **Next: Configure Instance Details**.
+  for **m4.xlarge**, then click **Next: Configure Instance Details**.
 * Set the **Auto-assign Public IP** field to **Enable**, and the **IAM
   role** to "spinnakerRole".
 * Click **Review and Launch**.
@@ -194,7 +203,7 @@ the **Continue** button.
     instructions](https://cloud.google.com/sdk).
 1. When the deployment completes, open an SSH tunnel from your host to the GCE instance.
 You can find the specific command in the **Suggest next steps** screen that appears.
-  * Spinnaker may take a few minutes to configure itself. We suggest giving your instance 3-5 minutes 
+  * Spinnaker may take a few minutes to configure itself. We suggest giving your instance 3-5 minutes
     for post-configurations to complete.
 
 ### Running Spinnaker on a host not on AWS or GCP
@@ -203,7 +212,7 @@ If you just want to try running on your local workstation, type in the following
 
     bash <(curl --silent https://spinnaker.bintray.com/scripts/InstallSpinnaker.sh)
 
-The above [script](https://github.com/spinnaker/spinnaker/blob/master/InstallSpinnaker.sh) 
+The above [script](https://github.com/spinnaker/spinnaker/blob/master/InstallSpinnaker.sh)
 installs and configures Spinnaker, and starts all Spinnaker
 components, including Redis and Cassandra, which Spinnaker components
 use to store data. If you see any errors, please just run the command
