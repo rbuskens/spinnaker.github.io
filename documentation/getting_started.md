@@ -15,7 +15,9 @@ the steps of setting up and using Spinnaker to deploy to and manage clusters
 on AWS and/or Google Cloud Platform (GCP).
 
 If you're interested in a set up for developers, please refer to the [README](https://github.com/spinnaker/spinnaker/blob/master/README.adoc) for
-developer setup. If you're really interested, you can try out getting set up via
+developer setup. 
+
+For a container based alternative to this guide, please see: 
 [docker compose](https://github.com/spinnaker/spinnaker/tree/master/experimental/docker-compose).
 
 For the quick start, you will go through the following steps:
@@ -29,9 +31,7 @@ or local machine that will be used to run Spinnaker.
 the image to a cluster, and let you explore Spinnaker in operation.
 1. When you're done experimenting, clean everything up and stop Spinnaker.
 
-Keep in mind that naming of your entities in AWS is important as these names are parsed
-and Spinnaker will use them to populate available resource lists in the Spinnaker
-UI.
+A [troubleshooting guide](http://spinnaker.io/documentation/troubleshooting.html) is available to walk through common problems. 
 
 ## Step 1: Set up your target deployment environment
 
@@ -48,6 +48,8 @@ If you'd like to have Spinnaker deploy to and manage clusters on AWS,
 you'll need to have an AWS project set up. If you've already got one,
 please skip to the next step. Otherwise, please follow the
 instructions below.
+
+Keep in mind that naming of your entities in AWS is important as Spinnaker will use them to populate available resource lists in the Spinnaker UI.
 
 Sign into the [AWS console](https://console.aws.amazon.com) and let
 AWS pick a default region where your project resources will be
