@@ -197,9 +197,6 @@ You can find the specific command in the "Suggest next steps" screen that appear
 
 ### Running Spinnaker on a host not on AWS or GCP
 
-If you have chosen to run your Spinnaker instance somwhere other than on AWS or GCP (e.g. your local workstation),
-follow these steps:
-
 If you just want to try running on your local workstation, type in the following command:
 
     bash <(curl --silent https://spinnaker.bintray.com/scripts/InstallSpinnaker.sh)
