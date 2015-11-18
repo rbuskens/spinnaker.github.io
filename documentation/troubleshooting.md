@@ -10,6 +10,68 @@ lang: en
 
 # Troubleshooting Guide
 
+## General Troubleshooting Procedures
+The following steps show a typical set of diagnostic instructions for tracking down Spinnaker issues. 
+
+Let's say you have a screen in Spinnaker that is misbehaving. Here, we see that when I click on create application, the screen is stuck in an endless spinner. 
+
+![screen with error](../images/troubleshooting/stuckApplication.png)
+
+### Check browser developer console ###
+The first thing to always do is to check the browser developer console. This will usually give you a clue to the type of issue you are seeing. In Chrome, you can access this via `View > Developer > Developer Tools`.
+
+Start with the Console tab to see if there are any JavaScript errors that are causing grief. Any errors here would be in the Deck service.  
+
+Network tab and see if there are any connectivity issues or any services returning a non-200 http response. 
+![screen with error](../images/troubleshooting/connectionIssue.png).
+
+The following table shows a list of services and the port they are traditionally bound to in the Spinnaker configuration files. 
+
+| Service | Port |   
+|---------|------|
+|Deck| 9000|
+|Clouddriver  |7002  |
+|Echo  |8089  | 
+|Front50  | 8080  |
+|Gate|8084|
+|Igor|8088|
+|Orca|8083|
+|Rosco|8087|
+|Rush|8085|
+
+
+### Check Service Logs ###
+
+If you have identified a service, you can check the service logs.
+
+If you used one of the pre-baked Spinnaker machine images or installed Spinnaker from the .deb files, each subsystem will write its logs to:
+
+`/var/log/spinnaker/{subsystem-name}/{subsystem-name}.log`
+
+For example:
+
+`/var/log/spinnaker/clouddriver/clouddriver.log`
+
+`/var/log/spinnaker/orca/orca.log`
+
+`/var/log/spinnaker/rosco/rosco.log`
+
+### Check Spinnaker API ###
+
+Spinnaker provides a swagger endpoint available through Gate (8084). All of the Spinnaker UI goes through this API. The endpoint is useful if you wish to try passing different variables to your requests to test out variables and isolate problems.
+
+To access the API, go to http://[gate url]/swagger/index.html ( for example [http://localhost:8084](http://localhost:8084) )
+
+![API](../images/troubleshooting/api.png)
+
+###Check Health / Config endpoints###
+
+Most Spinnaker services have a health check endpoint configured. Sometimes this can provide useful information in terms of visualizing service health. To see if there is any information available, click on http://[service url]/health (e.g, [http://localhost:8084/health](http://localhost:8084/health)).
+
+Sometimes issues arise from incorrectly set environment variables or configuration files. You can see configurations available by click on http://[service url]/env (e.g, [http://localhost:8084/env](http://localhost:8084/env)), which will provide a dump of the service environment. 
+
+There are a few other endpoints available actuator endpoints can be seen in the [Spring Boot Actuator Endpoints documentation.](http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#production-ready).
+
 ## I can't create an Application.
 This can manifest as either an endless spinner or as an error message rendered at the bottom of the Create Application dialog.
 
@@ -65,15 +127,3 @@ Clouddriver also exposes an entrypoint that can be used to refresh its account l
 
 But for the sake of simplicity and repeatability, the safest path is usually the coarse-grained `sudo restart spinnaker`.
 
-## Where are the logs?
-If you used one of the pre-baked Spinnaker machine images or installed Spinnaker from the .deb files, each subsystem will write its logs to:
-
-`/var/log/spinnaker/{subsystem-name}/{subsystem-name}.log`
-
-For example:
-
-`/var/log/spinnaker/clouddriver/clouddriver.log`
-
-`/var/log/spinnaker/orca/orca.log`
-
-`/var/log/spinnaker/rosco/rosco.log`
