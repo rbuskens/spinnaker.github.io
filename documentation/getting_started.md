@@ -147,7 +147,13 @@ Create an AWS virtual machine.
   **Next Step**, followed by **Create Role**.
 * Goto [AWS Console](https://console.aws.amazon.com) > EC2.
 * Click **Launch Instance**.
-* If the default region where your resources were allocated in [Step 1](#step-1-set-up-your-target-deployment-environment) is <code>us-west-2</code>, click **Select** for the **Spinnaker-Ubuntu-14.04-9 - ami-094a5a68** image. Otherwise, consult {% include link.to id="ami_table" text="this region-to-AMI mapping table" %} to identify an appropriate image to use.
+* If the default region where your resources were allocated in [Step
+  1](#step-1-set-up-your-target-deployment-environment) is
+  <code>us-west-2</code>, click **Select** for the
+  **Spinnaker-Ubuntu-14.04-9 - ami-094a5a68** image. Otherwise,
+  consult the region-to-AMI mapping table (AMI ID table) available
+  under "Quick Reference" on the spinnaker.io top level nagivation
+  menu.
 * Under **Step 2: Choose an Instance Type**, click the radio button
   for **m4.large**, then click **Next: Configure Instance Details**.
 * Set the **Auto-assign Public IP** field to **Enable**, and the **IAM
