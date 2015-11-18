@@ -30,6 +30,8 @@ The last step is to restart the two Spinnaker services that require Cassandra to
 We will be making front50 and [echo](https://github.com/spinnaker/echo) more tolerant of an unavailable or misconfigured Cassandra cluster on startup shortly.
 
 ## I changed my configuration. How do I get Spinnaker to pick up the modified configuration?
+*Note: This section is useful mainly for operators who installed Spinnaker from the .deb files (usually on an AWS or GCE VM). If doing development locally, you can probably skip this section.*
+
 There are various ways you can modify your configuration:
 * Re-running `InstallSpinnaker.sh`
 * Editing `/etc/default/spinnaker`
@@ -46,3 +48,19 @@ If you've modified your configuration via any of those methods, the simplest way
 \# Update Deck (the browser application) settings
 
 `sudo /opt/spinnaker/bin/reconfigure_spinnaker.sh`
+
+You can also restart individual Spinnaker subsystems:
+
+`sudo service restart {service-name}`
+
+For example, the two services that typically need to be restarted to pick up account-related changes can be restarted with these commands:
+
+`sudo service restart clouddriver`
+
+`sudo service restart rosco`
+
+Clouddriver also exposes an entrypoint that can be used to refresh its account lists dynamically:
+
+`curl -X POST localhost:7002/config-refresh`
+
+But for the sake of simplicity and repeatability, the safest path is usually the coarse-grained `sudo restart spinnaker`.
