@@ -41,7 +41,7 @@ There are various ways you can modify your configuration:
 
 If you've modified your configuration via any of those methods, the simplest way to have Spinnaker synchronize your configuration is to run these two commands:
 
-\# Restart all Spinnaker subsystems
+\# Restart all Spinnaker services
 
 `sudo restart spinnaker`
 
@@ -49,7 +49,7 @@ If you've modified your configuration via any of those methods, the simplest way
 
 `sudo /opt/spinnaker/bin/reconfigure_spinnaker.sh`
 
-You can also restart individual Spinnaker subsystems:
+You can also restart individual Spinnaker services:
 
 `sudo service restart {service-name}`
 
@@ -66,9 +66,11 @@ Clouddriver also exposes an entrypoint that can be used to refresh its account l
 But for the sake of simplicity and repeatability, the safest path is usually the coarse-grained `sudo restart spinnaker`.
 
 ## Where are the logs?
-If you used one of the pre-baked Spinnaker machine images or installed Spinnaker from the .deb files, each subsystem will write its logs to:
+*Note: This section is useful mainly for operators who either used one of the pre-baked Spinnaker machine images or installed Spinnaker from the .deb files (usually on an AWS or GCE VM). If doing development locally, you can probably skip this section.*
 
-`/var/log/spinnaker/{subsystem-name}/{subsystem-name}.log`
+Each service will write its logs to:
+
+`/var/log/spinnaker/{service-name}/{service-name}.log`
 
 For example:
 
@@ -77,3 +79,14 @@ For example:
 `/var/log/spinnaker/orca/orca.log`
 
 `/var/log/spinnaker/rosco/rosco.log`
+
+## Why can't I access Spinnaker using my machine's IP addr or hostname?
+*Note: This section is useful mainly for operators who either used one of the pre-baked Spinnaker machine images or installed Spinnaker from the .deb files (usually on an AWS or GCE VM). If doing development locally, you can probably skip this section.*
+
+There is no authentication on the services so they are currently bound to localhost (since the services have admin access to your environment).
+
+A few ways you can remove this restriction:
+
+1. Edit `/etc/apache/ports.conf` and change `Listen 127.0.0.1:9000` to `Listen 9000`
+1. Add a reverse proxy for ports you wish to open in Apache
+1. Edit config files in `/opt/spinnaker/conf` to disable the bind to `localhost`. Change `localhost` to domain name or `0.0.0.0`
