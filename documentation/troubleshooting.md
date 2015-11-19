@@ -95,6 +95,7 @@ We will be making front50 and [echo](https://github.com/spinnaker/echo) more tol
 *Note: This section is useful mainly for operators who either used one of the pre-baked Spinnaker machine images or installed Spinnaker from the .deb files (usually on an AWS or GCE VM). If doing development locally, you can probably skip this section.*
 
 There are various ways you can modify your configuration:
+
 * Re-running `InstallSpinnaker.sh`
 * Editing `/etc/default/spinnaker`
 * Editing one of the `.yml` files (e.g. `/opt/spinnaker/config/spinnaker-local.yml`, `/opt/spinnaker/config/clouddriver.yml`, `/opt/rosco/config/rosco.yml`)
@@ -103,13 +104,23 @@ There are various ways you can modify your configuration:
 
 If you've modified your configuration via any of those methods, the simplest way to have Spinnaker synchronize your configuration is to run these two commands:
 
-\# Restart all Spinnaker services
+**1. Restart all Spinnaker services**
 
 `sudo restart spinnaker`
 
-\# Update Deck (the browser application) settings
+**2. Update Deck (the browser application) settings** 
 
 `sudo /opt/spinnaker/bin/reconfigure_spinnaker.sh`
+
+**3. Refresh Spinnaker Browser Cache** 
+
+Navigate to the config tab of an application, ( e.g. http://localhost:9000/#/applications/{my app}/config. )
+
+![Clear Cache](../images/troubleshooting/cache.png)
+
+Click on 'Refresh all caches' to make sure your configuration changes are loaded. 
+
+**Additional Options: Restarting Individual Services**
 
 You can also restart individual Spinnaker services:
 
@@ -120,6 +131,8 @@ For example, the two services that typically need to be restarted to pick up acc
 `sudo service restart clouddriver`
 
 `sudo service restart rosco`
+
+**Additional Options: Reload Clouddriver Config Without Restart**
 
 Clouddriver also exposes an entrypoint that can be used to refresh its account lists dynamically:
 
