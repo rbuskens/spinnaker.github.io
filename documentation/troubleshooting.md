@@ -116,6 +116,8 @@ If you've modified your configuration via any of those methods, the simplest way
 
 Navigate to the config tab of an application, ( e.g. http://localhost:9000/#/applications/{my app}/config. )
 
+You should see a section with the heading Cache Management:
+
 ![Clear Cache](../images/troubleshooting/cache.png)
 
 Click on 'Refresh all caches' to make sure your configuration changes are loaded. 
