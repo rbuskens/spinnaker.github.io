@@ -87,7 +87,7 @@ The Spinnaker service responsible for creating applications is [front50](https:/
 
 Thrift should now be enabled. Execute `curl localhost:9160` and verify that you receive an 'empty reply'.
 
-The last step is to restart the two Spinnaker services that require Cassandra to be available on startup: `sudo service front50 restart`, `sudo service echo restart` and `sudo service rush restart`.
+The last step is to restart the three Spinnaker services that require Cassandra to be available on startup: `sudo service front50 restart`, `sudo service echo restart` and `sudo service rush restart`.
 
 We will be making front50, [echo](https://github.com/spinnaker/echo) and [rush](https://github.com/spinnaker/rush) more tolerant of an unavailable or misconfigured Cassandra cluster on startup shortly.
 
