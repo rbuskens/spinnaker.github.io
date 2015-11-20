@@ -153,7 +153,7 @@ A few ways you can remove this restriction:
 1. Add a reverse proxy for ports you wish to open in Apache
 1. Edit config files in `/opt/spinnaker/conf` to disable the bind to `localhost`. Change `localhost` to domain name or `0.0.0.0`
 
-### I don't see my VPCs in any of the dropdowns.
+## I don't see my VPCs in any of the dropdowns.
 Spinnaker uses naming conventions to parse a lot of things, including VPC and subnet names. If you are starting with a new VPC, we strongly suggest you name your subnets with the following pattern: 
 `{vpcName}.{subnetPurpose (e.g. "internal")}.{availabilityZone}`
 Spinnaker will parse the subnet by splitting the name on the dots (`.`).
