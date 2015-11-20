@@ -89,7 +89,7 @@ Thrift should now be enabled. Execute `curl localhost:9160` and verify that you 
 
 The last step is to restart the three Spinnaker services that require Cassandra to be available on startup: `sudo service front50 restart`, `sudo service echo restart` and `sudo service rush restart`.
 
-We will be making front50, [echo](https://github.com/spinnaker/echo) and [rush](https://github.com/spinnaker/rush) more tolerant of an unavailable or misconfigured Cassandra cluster on startup shortly.
+We will be making [front50](https://github.com/spinnaker/front50), [echo](https://github.com/spinnaker/echo) and [rush](https://github.com/spinnaker/rush) more tolerant of an unavailable or misconfigured Cassandra cluster on startup shortly.
 
 ## I changed my configuration. How do I get Spinnaker to pick up the modified configuration?
 *Note: This section is useful mainly for operators who either used one of the pre-baked Spinnaker machine images or installed Spinnaker from the .deb files (usually on an AWS or GCE VM). If doing development locally, you can probably skip this section.*
