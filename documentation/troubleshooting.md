@@ -166,4 +166,4 @@ If you're working with existing VPCs and subnets, there is an alternative approa
 
 If the `immutable_metadata` tag exists and it includes the `purpose` field, Spinnaker will use that value; it will *not* attempt to parse the name tag.
 
-If you modify the subnet tags, you may need to refresh the browser's internal cache of the VPCs/subnets before they appear as options in dropdowns. See "I changed my configuration..." section above for instructions on refreshing the cache.
+If you modify the subnet tags, you may need to refresh the browser's internal cache of the VPCs/subnets before they appear as options in dropdowns. See "[I changed my configuration...](#i-changed-my-configuration-how-do-i-get-spinnaker-to-pick-up-the-modified-configuration)" for instructions on refreshing the cache.
