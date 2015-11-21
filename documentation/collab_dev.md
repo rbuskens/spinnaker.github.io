@@ -60,10 +60,10 @@ closing it. The assignee might request reviews from non-maintainers.
 
 Mantainers will do merges of appropriately reviewed-and-approved
 changes during their local business hours (e.g., between 7:00am Monday
-to 5:00pm (17:00h) Friday). PRs that arrive over the weekend or on
+to 5:00pm (17:00h) Friday). Complex or controversial PRs that arrive over the weekend or on
 holidays will only be merged if there is a very good reason for it and
 if the code review requirements have been met. Concretely, this means
-that no one should merge changes immediately before going to bed for
+that no one should merge complex or controversial changes immediately before going to bed for
 the night.
 
 There may be discussion and even approvals granted outside of the
