@@ -1,6 +1,6 @@
 ---
 layout: toc-page
-title: Spinnaker Property Settings
+title: How do I configure Spinnaker
 id: properties
 lang: en
 ---

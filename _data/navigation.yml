@@ -9,6 +9,7 @@
   children:
     - getting_started
     - developer_guide
+    - properties
     - faq
     - troubleshooting
 -
