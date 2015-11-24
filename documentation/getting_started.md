@@ -86,7 +86,7 @@ role.
 1. Create an EC2 Key Pair for connecting to your instances.
 * Goto [Console](https://console.aws.amazon.com) > EC2 > Key Pairs.
 * Click **Create Key Pair**.
-* Name the key pair <code>my-aws-account-keypair</code>.
+* Name the key pair <code>my-aws-account-keypair</code>. (Note: this must match your account name plus "-keypair")
 * AWS will download file <code>my-aws-account-keypair.pem</code> to
   your computer. <code>chmod 400</code> the file.
 
