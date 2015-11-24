@@ -172,7 +172,7 @@ Create an AWS virtual machine.
 * Note that it will take several minutes for Spinnaker post-configurations to complete.
 
 1. Shell in and open an SSH tunnel from your host to the virtual machine.
-* Add this to ~/.ssh/config
+* Add this to ~/.ssh/config (There's also an extended [config and start/stop script Gist](https://gist.github.com/Japh/63b4a53883d68c648e77) available)
 
           Host spinnaker
             HostName <Public IP address of instance you just created>
