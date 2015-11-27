@@ -194,19 +194,34 @@ Create an AWS virtual machine.
 * Create a spinnaker-tunnel.sh file with the following content, and give it execute permissions
 
           #!/bin/bash
+
           socket=$HOME/.ssh/spinnaker-tunnel.ctl
 
-          if [ ! \( -e ${socket} \) ]; then
-            echo "Opening tunnel to Spinnaker..."
-            ssh -f -N spinnaker-start && echo "Tunnel open."
-          else
-            echo "Closing tunnel to Spinnaker..."
-            ssh -O "exit" spinnaker-stop && echo "Tunnel closed."
+          if [ "$1" == "start" ]; then
+            if [ ! \( -e ${socket} \) ]; then
+              echo "Starting tunnel to Spinnaker..."
+              ssh -f -N spinnaker-start && echo "Done."
+            else
+              echo "Tunnel to Spinnaker running."
+            fi
           fi
 
-* Execute the script to toggle your Spinnaker tunnel
+          if [ "$1" == "stop" ]; then
+            if [ \( -e ${socket} \) ]; then
+              echo "Stopping tunnel to Spinnaker..."
+              ssh -O "exit" spinnaker-stop && echo "Done."
+            else
+              echo "Tunnel to Spinnaker stopped."
+            fi
+          fi
 
-          ./spinnaker-tunnel.sh
+* Execute the script to start your Spinnaker tunnel
+
+          ./spinnaker-tunnel.sh start
+
+* You can also stop your Spinnaker tunnel
+
+          ./spinnaker-tunnel.sh stop
 
 ### Google Cloud Platform Setup
 
