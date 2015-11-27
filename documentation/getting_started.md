@@ -174,16 +174,54 @@ Create an AWS virtual machine.
 1. Shell in and open an SSH tunnel from your host to the virtual machine.
 * Add this to ~/.ssh/config
 
-          Host spinnaker
-            HostName <Public IP address of instance you just created>
+          Host spinnaker-start
+            HostName <Public DNS name of instance you just created>
             IdentityFile </path/to/my-aws-account-keypair.pem>
+            ControlMaster yes
+            ControlPath ~/.ssh/spinnaker-tunnel.ctl
+            RequestTTY no
             LocalForward 9000 127.0.0.1:9000
             LocalForward 8084 127.0.0.1:8084
             LocalForward 8087 127.0.0.1:8087
             User ubuntu
-* Execute
 
-          ssh spinnaker
+          Host spinnaker-stop
+            HostName <Public DNS name of instance you just created>
+            IdentityFile </path/to/my-aws-account-keypair.pem>
+            ControlPath ~/.ssh/spinnaker-tunnel.ctl
+            RequestTTY no
+
+* Create a spinnaker-tunnel.sh file with the following content, and give it execute permissions
+
+          #!/bin/bash
+
+          socket=$HOME/.ssh/spinnaker-tunnel.ctl
+
+          if [ "$1" == "start" ]; then
+            if [ ! \( -e ${socket} \) ]; then
+              echo "Starting tunnel to Spinnaker..."
+              ssh -f -N spinnaker-start && echo "Done."
+            else
+              echo "Tunnel to Spinnaker running."
+            fi
+          fi
+
+          if [ "$1" == "stop" ]; then
+            if [ \( -e ${socket} \) ]; then
+              echo "Stopping tunnel to Spinnaker..."
+              ssh -O "exit" spinnaker-stop && echo "Done."
+            else
+              echo "Tunnel to Spinnaker stopped."
+            fi
+          fi
+
+* Execute the script to start your Spinnaker tunnel
+
+          ./spinnaker-tunnel.sh start
+
+* You can also stop your Spinnaker tunnel
+
+          ./spinnaker-tunnel.sh stop
 
 ### Google Cloud Platform Setup
 
