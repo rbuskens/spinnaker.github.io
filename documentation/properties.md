@@ -56,7 +56,7 @@ This is done using Spring Boot's [externalized property settings](http://docs.sp
 
 Look at the following code from Spinnaker:
 
-```java
+{% highlight java %}
 @Component
 @ConditionalOnProperty('slack.enabled')
 class SlackNotificationService implements NotificationService {
@@ -68,7 +68,7 @@ class SlackNotificationService implements NotificationService {
   @Value('${slack.token}')
   String token
   ...
-```
+{% endhighlight %}
 
 Assume that you are configuring echo.
 
