@@ -14,7 +14,7 @@ This guide will run through the workflow of setting up an example application de
 
 Below is a diagram of the workflow we will setup.
 
-![diagram](flow.png)
+![diagram](../images/hello-spinnaker/flow.png)
 
 ##Setup Jenkins
 
@@ -46,7 +46,7 @@ Visit port :8080 on your instance and you should see Jenkins startup and present
 
 Spinnaker communicates with Jenkins by using its REST API. However the API is not enabled by default. To enable it we first must enable global security (which is a good idea anyway). Click "Manage Jenkins" then "Configure Global Security". Under Access Control check "Jenkins own database" and "allow users to sign up". Under authorization check "Logged-in users can do anything" and save.
 
-![jenkins1](jenkins1.png)
+![jenkins1](../images/hello-spinnaker/jenkins1.png)
 
 You will now be presented with a login screen. Click the "Create an account" link to register. Take note of your username and password, Spinnaker will need them later. Now you can turn off allowing users to register as you can add them manually from the control panel. The Jenkins API is now enabled.
 
@@ -62,7 +62,7 @@ First create a new s3 bucket to hold your packages, take note of the name and re
 
 Next edit the properties of your bucket and turn on static website hosting.
 
-![s3](s3.png)
+![s3](../images/hello-spinnaker/s3.png)
 
 We will now install deb-s3 on our Jenkins server.
 
@@ -150,7 +150,7 @@ The first is a simple job that polls our git repo for changes. Spinnaker has no 
 * Add your app fork git address.
 * Under build triggers check "Poll SCM" and enter `* * * * *` for Jenkins to poll once a minute. You can now save the job.
 
-![diagram](jenkins2.png)
+![diagram](../images/hello-spinnaker/jenkins2.png)
 
 2. Build Job
 
@@ -164,7 +164,7 @@ This job will be responsible for building and publishing our package, along with
 * If you used aptly for your repo, add the following: `~/aptly repo add hello build/distributions/*.deb && ./aptly publish repo -architectures="amd64" -component=main -distribution=trusty -skip-signing=true hello`
 * Add a post-build action: "Archive the artifacts" with `build/distributions/*/deb` as the directory. This allows our deb package name to be passed to spinnaker.
 
-![diagram](build.png)
+![diagram](../images/hello-spinnaker/build.png)
 
 ##Configure Spinnaker
 
@@ -232,27 +232,27 @@ The concept of an application allows us to group our resources and pipelines in 
 * Visit http://localhost:9000 and click the actions button -> create application.
 * Fill out the information, naming it "hello" and click save. We are now ready to add resources to our app.
 
-![create](create.png)
+![create](../images/hello-spinnaker/create.png)
 
 ###Create security group
 
 Now we will create a security group to allow access to our application. Spinnaker only allows you to attach ingress sources based on another security group, so we first must create a base security group via the aws console to allow traffic on port 8080.
 
-![group1](group1.png)
+![group1](../images/hello-spinnaker/group1.png)
 
 Now we can use this group as an inbound rule for our application security group. Click the security groups tab and add a new group.
 
-![group1](group2.png)
+![group1](../images/hello-spinnaker/group2.png)
 
 Select our group as ingress source
 
-![group1](group3.png)
+![group1](../images/hello-spinnaker/group3.png)
 
 ###Create load balancer
 
 The load balancer will be the entry-point to our application scaling group. Click the load balancers tab and add it.
 
-![group1](group4.png)
+![group1](../images/hello-spinnaker/group4.png)
 
 ##Setup Spinnaker Pipeline
 
@@ -266,52 +266,52 @@ Click the pipelines tab and add a new pipeline.
 
 Add a trigger and select "jenkins job" then we can select our jenkins server and choose the "hello poll" job. Spinnaker will poll jenkins for a successful run of this job. We know that if it ran then there is new code to deploy from github
 
-![group1](pipe1.png)
+![group1](../images/hello-spinnaker/pipe1.png)
 
 ###Build and package stage
 
 The first stage in our pipeline will be to build and package our app. This also published our deb to our repository for baking. Choose Jenkins for type and select our "hello build" job.
 
-![group1](pipe2.png)
+![group1](../images/hello-spinnaker/pipe2.png)
 
 ###Bake stage
 
 The next stage will bake our application. "Baking" refers to booting up an instance, installing our application package, and saving the os image for launching. All of this is handled by [packer](http://packer.io). Because our build stage returns the name of our deb artifact and knows our repo address, we simply need to select the region(s) and add our application package name. We can also take advantage of the async features of spinnaker and do a multi-region bake.
 
-![group1](bake.png)
+![group1](../images/hello-spinnaker/bake.png)
 
 ###Deploy stage
 
 Spinnaker will automatically pass our baked image id to the deploy stage. This is where we set up our server group to be deployed to a cluster.
 
-![group1](pipe4.png)
+![group1](../images/hello-spinnaker/pipe4.png)
 
 Click "add server group" and configure the server group.
 
-![group1](pipe5.png)
+![group1](../images/hello-spinnaker/pipe5.png)
 
 Our app is fairly lightweight so t2.micro will be fine for instance type.
 
-![group1](pipe6.png)
+![group1](../images/hello-spinnaker/pipe6.png)
 
 Choose two instances so we can be sure they our load balanced correctly. Our application will display the instance id so we can easily confirm this.
 
-![group1](pipe7.png)
+![group1](../images/hello-spinnaker/pipe7.png)
 
 ##Triggering the pipeline
 
 We can trigger our pipeline several ways. The first way is to simply push to our github repo. Jenkins will detect this and run our polling job, which Spinnaker will detect and kick off our pipeline.
 
-![group1](pipe8.png)
+![group1](../images/hello-spinnaker/pipe8.png)
 
 We then can see our pipeline progress to the bake stage.
 
-![group1](pipe9.png)
+![group1](../images/hello-spinnaker/pipe9.png)
 
 Finally we reach our deploy stage where our server group is created.
 
-![group1](pipe10.png)
+![group1](../images/hello-spinnaker/pipe10.png)
 
 We can also manually trigger the pipeline by clicking the "start manual execution" button. Then we can select a specific build of our app from Jenkins for Spinnaker to use.
 
-![group1](pipe11.png)
+![group1](../images/hello-spinnaker/pipe11.png)

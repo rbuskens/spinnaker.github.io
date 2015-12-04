@@ -8,10 +8,10 @@
   title: Guides
   children:
     - getting_started
+    - hello_world
     - developer_guide
     - faq
     - troubleshooting
-    - hello_world
 -
   title: Community
   children:
