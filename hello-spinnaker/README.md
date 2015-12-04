@@ -272,11 +272,11 @@ The next stage will bake our application. "Baking" refers to booting up an insta
 
 ###Deploy stage
 
-Spinnaker will automatically pass our baked image id to the deploy stage. This is where we set up our ASG to be deployed to a cluster.
+Spinnaker will automatically pass our baked image id to the deploy stage. This is where we set up our server group to be deployed to a cluster.
 
 ![group1](pipe4.png)
 
-Click "add server group" and configure the ASG
+Click "add server group" and configure the server group.
 
 ![group1](pipe5.png)
 
@@ -298,7 +298,7 @@ We then can see our pipeline progress to the bake stage.
 
 ![group1](pipe9.png)
 
-Finally we reach our deploy stage where our ASG is created.
+Finally we reach our deploy stage where our server group is created.
 
 ![group1](pipe10.png)
 
