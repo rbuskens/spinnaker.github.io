@@ -2,6 +2,12 @@
 layout: base
 ---
 
+{% include head.html %}
+
+---
+layout: base
+---
+
 <body {% if page.page_class %}class="{{ page.page_class }}"{% endif %}>
   <a class="sr-only" href="#main-content">Skip to main content</a>
   {% include navigation.html %}

@@ -5,9 +5,6 @@ id: support_policy
 lang: en
 ---
 
-* Table of contents. This line is required to start the list.
-{:toc}
-
 # Support Policy
 
 ## Bugs and Feature Requests

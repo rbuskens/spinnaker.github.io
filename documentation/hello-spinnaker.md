@@ -5,9 +5,6 @@ id: hello_world
 lang: en
 ---
 
-* Table of contents. This line is required to start the list.
-{:toc}
-
 #An Introduction to Spinnaker: Hello Deployment
 
 This guide will run through the workflow of setting up an example application deployment with [Spinnaker](http://spinnaker.io/). It assumes you already have Spinnaker up and running on AWS or GCE. A guide for installation can be found [here](http://spinnaker.io/documentation/getting_started.html).

@@ -1,12 +1,71 @@
 ---
-layout: page
+layout: base
 ---
 
-<div class="row">
-  <div class="col-xs-12 toc-page not-ready">
-    {{ content }}
-    
-    <div class="row row-gap-medium"></div>
-    {% include intrasection-navigation.html %}
+<body {% if page.page_class %}class="{{ page.page_class }}"{% endif %}>
+
+  {% include navigation.html %}
+
+<div class="container-fluid">
+  <div class="row toc-page not-ready" id="content-section-rick">
+
+      <div class="side-navbar-rick">
+<!--        <div id="mytoc"></div>
+-->
+            <ul class="nav nav-pills nav-stacked">
+              {% for navigation_item in site.data.navigation %}
+                {% if navigation_item.path %}
+                  <li class="{% if navigation_item.path == page.path %}active{% endif %}">
+                    <a href="{{ site.baseurl }}{{ navigation_item.path }}"><h4>{{ navigation_item.title }}</h4></a>
+                    {% if navigation_item.path == page.path %}
+                      <div id="mytoc"></div>
+                    {% endif %}
+                  </li>
+                {% else %}
+                  {% assign item_page = site.pages | where:"id",navigation_item.id | first %}
+                  <li class="{% if navigation_item.id == page.id %}active{% endif %}">
+                    <h4>{{ navigation_item.title }}</h4>
+                  </li>
+                  {% if navigation_item.children %}
+                    <ul style="list-style-type:none; padding-left:0px;">
+                      {% for navigation_child in navigation_item.children %}
+                        {% assign child_page = site.pages | where:"id",navigation_child | first %}
+                        <li>
+                          <a href="{{ site.baseurl }}{{ child_page.url}}">{{ child_page.title }}</a>
+                        </li>
+                        {% if child_page.id == page.id %}
+                          <ul>
+                            <div class="not-ready" id="mytoc"></div>
+                          </ul>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    {% if navigation_item.id == page.id %}
+                      <div id="mytoc"></div>
+                    {% else %}
+                    <ul style="list-style-type:none; padding-left:0px;">
+                      <li class="{% if navigation_item.id == page.id %}active{% endif %}">
+                        <a href="{{ site.baseurl }}{{ item_page.url }}">{{ navigation_item.title }}</a>
+                      </li>
+                    </ul>
+                    {% endif %}
+                  {% endif %}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+      </div>
+
+      <div class="standard-page" id="main-content-rick">
+        {{ content }}
+      </div>
+
   </div>
 </div>
+
+    {% include site-footer.html %}
+
+    {% include javascript-includes.html %}
+
+</body>

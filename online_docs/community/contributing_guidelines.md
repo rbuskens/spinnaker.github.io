@@ -5,9 +5,6 @@ id: contributing_guidelines
 lang: en
 ---
 
-* Table of contents. This line is required to start the list.
-{:toc}
-
 # Contributing guidelines
 
 ## Filing issues

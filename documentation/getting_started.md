@@ -5,9 +5,6 @@ id: getting_started
 lang: en
 ---
 
-* Table of contents. This line is required to start the list.
-{:toc}
-
 # Getting started
 
 These instructions quickly get Spinnaker up and running, then walk you through

@@ -5,7 +5,8 @@
   title: Overview
   id: overview
 -
-  title: Guides
+  title: Documentation
+  id: documentation
   children:
     - getting_started
     - hello_world
@@ -15,6 +16,7 @@
     - troubleshooting
 -
   title: Community
+  id: community
   children:
     - collab_dev
     - code_of_conduct
@@ -22,6 +24,7 @@
     - support_policy
 -
   title: Quick Reference
+  id: quick_ref
   children:
     - ami_table
     - google_cloud_launcher

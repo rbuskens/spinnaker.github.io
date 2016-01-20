@@ -10,6 +10,7 @@
 @import "includes/prettify-theme-terminal.less";
 @import "includes/icons.less";
 @import "includes/intrasection-navigation.less";
+@import "includes/sidebar-nav.less";
 // Left here in case it becomes useful to try out later
 // @import "includes/prettify-theme-tomorrow-night.less";
 
@@ -127,6 +128,8 @@ body {
   // See http://nicolasgallagher.com/jump-links-and-viewport-positioning/
   // Additionally modified to set manual z index stacking order so headers are behind other
   // elements and thus don't devour the clicks intended for them.
+  width: 100%;
+
   h1, h2, h3, h4 {
     position: relative;
     border-top: (@navbar-height + @site-content-padding-top) solid transparent;
@@ -155,6 +158,14 @@ body {
   border: 1px solid @nested-item-border-color;
   margin: @nested-item-margin;
   .img-responsive();
+}
+
+.page-title-bar {
+  background-color: @toc-background;
+  margin-top: @page-title-bar-margin-top;
+  padding-top: @page-title-bar-padding-top;
+  padding-bottom: @page-title-bar-padding-bottom;
+  width: 100%;
 }
 
 .video-page {
@@ -216,4 +227,17 @@ hr {
       margin-top: 40px;
     }
   }
+}
+.gsc-control-cse *,
+.gsc-control-cse *:before,
+.gsc-control-cse *:after {
+  -webkit-box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  box-sizing: content-box !important;
+}
+.navbar-fixed-top .navbar-collapse {
+  max-height: 355px;
+}
+.navbar-collapse.in {
+  overflow-y: inherit ;
 }

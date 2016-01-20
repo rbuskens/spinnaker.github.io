@@ -5,9 +5,6 @@ id: code_of_conduct
 lang: en
 ---
 
-* Table of contents. This line is required to start the list.
-{:toc}
-
 # Spinnaker Community Code of Conduct
 
 Please note that this project is released with a Contributor Code of

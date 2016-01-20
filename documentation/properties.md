@@ -5,9 +5,6 @@ id: properties
 lang: en
 ---
 
-* Table of contents. This line is required to start the list.
-{:toc}
-
 # How do I configure Spinnaker?
 
 When you setup Spinnaker according to direction at this site, you will get a set of [configuration files](https://github.com/spinnaker/spinnaker/tree/master/config). Spinnaker comes with `spinnaker.yml`, `spinnaker-local.yml`, and a `<module>.yml` file (for each module), intent on simplifying configuration.

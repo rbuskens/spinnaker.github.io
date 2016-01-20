@@ -5,9 +5,6 @@ id: developer_guide
 lang: en
 ---
 
-* Table of contents. This line is required to start the list.
-{:toc}
-
 #Developer's Guide
 
 This is a preliminary guide for developers. Please check back soon as

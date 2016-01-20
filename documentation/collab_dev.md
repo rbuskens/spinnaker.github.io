@@ -5,9 +5,6 @@ id: collab_dev
 lang: en
 ---
 
-* Table of contents. This line is required to start the list.
-{:toc}
-
 # On Collaborative Development
 
 Spinnaker is open source, but many of the people working on it do so
